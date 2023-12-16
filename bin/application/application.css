@@ -1,0 +1,67 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.button{
+	-fx-border-color: linear-gradient(#f77777, #e67777);
+	-fx-border-radius: 30; 
+	-fx-border-width: 2px;
+	-fx-background-color: linear-gradient(#bddbb6, #b2c7ad);
+	-fx-background-radius: 30;
+}
+.button:pressed {
+	-fx-background-color: #259c05;
+}
+.text-area .content {
+ -fx-background-color: linear-gradient(#4d007d, #010a87); 
+ 
+}
+.text-area{
+	-fx-text-fill: white ;
+}
+
+.chat-bubble {
+   	-fx-border-radius: 10; 
+   	-fx-border-width: 2px;
+   	-fx-border-color: orange;
+    -fx-background-insets: 0,1;
+    -fx-padding: 10,10,10,10;
+  	-fx-background-color: white; 
+  	-fx-background-radius: 10 ;
+    
+}
+
+.chat-bubble2 {
+   	-fx-border-radius: 10; 
+   	-fx-border-width: 2px;
+   	-fx-border-color: purple;
+    -fx-background-insets: 0,1;
+    -fx-padding: 10,10,10,10;
+  	-fx-background-color: white; 
+  	-fx-background-radius: 10 ;
+    
+}
+
+
+.text-field {
+    -fx-border-width: 1px;
+	-fx-border-color: linear-gradient(#f77777, #e67777);
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 2 ;
+    -fx-prompt-text-fill: #6e656c;
+}
+
+.table-view .table-column{
+    -fx-alignment:center;
+    -fx-font-size:12px;
+    -fx-font-family :Courier New;
+    
+}
+
+.table-view .table-cell{
+    -fx-font-weight:normal;
+    -fx-font-size:16px;
+    -fx-font-family: Courier New;
+    
+
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
