@@ -213,10 +213,15 @@ public class Main extends Application {
 		}
 		else if (response.body().contains("vac"))
 			AlertBox.display("Error", "Por favor llene los campos");
-		else {
+		
+		else if (response.body().contains("cli")) {
 			userId = response.body().substring(3);
 			System.out.println(userId);
 			changeToClienteScreen(primaryStage);
+		}
+		else {
+			System.out.println(response.body());
+			AlertBox.display("Error", "Hubo un error, intente de nuevo mas tarde");
 		}
 	}
 	
