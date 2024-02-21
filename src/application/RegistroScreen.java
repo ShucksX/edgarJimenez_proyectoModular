@@ -15,8 +15,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -122,15 +127,12 @@ public class RegistroScreen {
 		
 		layout.getChildren().addAll(lblRegistro,nombre,contrasena,contrasena2, correo, fechanac, pais, municipio,
 				localidad,botonRegistro,botonLogin,botonRegresar);
-		BackgroundFill backgroundFill =
-		        new BackgroundFill(
-		                Color.valueOf("#a3de95"),
-		                new CornerRadii(10),
-		                new Insets(10)
-		                );
+		BackgroundImage myBI= new BackgroundImage(new Image("background01.png",1800,800,false,true),
+		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		          BackgroundSize.DEFAULT);
 
 		Background background =
-		        new Background(backgroundFill);
+		        new Background(myBI);
 		layout.setBackground(background);
 		
 		//Set Scene

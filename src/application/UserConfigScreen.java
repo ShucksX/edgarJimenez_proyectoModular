@@ -167,7 +167,7 @@ public class UserConfigScreen {
 		
 		VBox layout = new VBox();
 		layout.setSpacing(10);
-		layout.setPadding(new Insets(10,15,10,15));
+		layout.setPadding(new Insets(15,15,15,15));
 		layout.setAlignment(Pos.BASELINE_LEFT);
 		layout.getChildren().addAll(label,nombreSub,nombre,nombreButton,contrasenaButton,
 				correoSub,correo,correoButton,fechaNacSub,fechaNac,fechaNacButton,
@@ -191,7 +191,6 @@ public class UserConfigScreen {
 		return answer;
 	}
 	
-	//TODO FINISH CONFIG CHANGERS
 	
 	private static void changeNombre(Usuario user) {
 		Stage window = new Stage();

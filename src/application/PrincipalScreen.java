@@ -8,14 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.layout.BackgroundImage;
 
 public class PrincipalScreen {
 	private Scene principalScene;
@@ -30,14 +28,14 @@ public class PrincipalScreen {
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		
-		Label lblTitulo = new Label ("Programa para pruebas del Alzheimer");
+		Label lblTitulo = new Label ("Aplicación para el apoyo del tratamiento de Alzheimer");
 		
 		lblTitulo.setFont(fontTitulo);
 		
 		Label logo = new Label();
 		Image img = new Image("LogoTemp.png");
 		ImageView view = new ImageView(img);
-		view.setFitHeight(200);
+		view.setFitHeight(400);
 		view.setPreserveRatio(true);
 		logo.setGraphic(view);
 		
@@ -53,15 +51,13 @@ public class PrincipalScreen {
 		botonRegistro.setFont(fontTexto);
 
 		layout.getChildren().addAll(lblTitulo,logo,botonLogin,botonRegistro);
-		BackgroundFill backgroundFill =
-		        new BackgroundFill(
-		                Color.valueOf("#a3de95"),
-		                new CornerRadii(10),
-		                new Insets(10)
-		                );
+		layout.setPadding(new Insets(80,0,0,0));
+		BackgroundImage myBI= new BackgroundImage(new Image("background01.png",1800,800,false,true),
+		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+		          BackgroundSize.DEFAULT);
 
 		Background background =
-		        new Background(backgroundFill);
+		        new Background(myBI);
 		layout.setBackground(background);
 		
 		//Set Scene

@@ -60,6 +60,7 @@ public class AdminScreen {
 		botonCS.setFont(fontTexto);
 		
 		center.getChildren().addAll(lblTitulo,botonSucursales,botonResultados,botonAddAdmin,botonCS);
+		center.setPadding(new Insets(20,10,10,10));
 		
 		Button botonConfig = new Button();
 		Image img = new Image("config.png");

@@ -88,7 +88,7 @@ public class ColoresScreen {
 		
 		VBox layout1 = new VBox();
 		layout1.setSpacing(8);
-		layout1.setPadding(new Insets(10,10,10,10));
+		layout1.setPadding(new Insets(80,10,10,10));
 		layout1.setAlignment(Pos.BASELINE_CENTER);
 		layout1.getChildren().addAll(lblTitulo,instruccion,colorEscoger);
 		BackgroundFill backgroundFill =
@@ -207,7 +207,7 @@ public class ColoresScreen {
 		GridPane layout2 = new GridPane();
 		layout2.setVgap(50);
 		layout2.setHgap(20);
-		layout2.setPadding(new Insets(20,10,10,10));
+		layout2.setPadding(new Insets(80,10,10,10));
 		layout2.setAlignment(Pos.BASELINE_CENTER);
 		layout2.getChildren().addAll(lblTitulo1,color1,color2,color3,color4,color5,color6);
 		BackgroundFill backgroundFill =
@@ -282,7 +282,7 @@ public class ColoresScreen {
 		GridPane layout3 = new GridPane();
 		layout3.setVgap(50);
 		layout3.setHgap(20);
-		layout3.setPadding(new Insets(10,10,10,10));
+		layout3.setPadding(new Insets(80,10,10,10));
 		layout3.setAlignment(Pos.BASELINE_CENTER);
 		layout3.getChildren().addAll(lblTitulo1,boton1,boton2,boton3,boton4,boton5,boton6,botonVolver);
 		BackgroundFill backgroundFill =
@@ -315,6 +315,7 @@ public class ColoresScreen {
 		Background background =
 		        new Background(backgroundFill);
 		layout.setBackground(background);
+		layout.setPadding(new Insets(150,0,0,0));
 		
 		//Set Scene
 		coloresScene = new Scene(layout,Utilities.windowWidth,Utilities.windowHeight);

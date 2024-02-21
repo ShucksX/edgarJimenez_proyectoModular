@@ -8,6 +8,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Stop;
@@ -63,7 +64,8 @@ public class Main extends Application {
 			registroScene.getBotonRegresar().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));			
 			//Configurar ventana principal
 			primaryStage.setScene(principalScene.getScene());
-			primaryStage.setTitle("Aplicacion para pruebas de Alzheimer");
+			primaryStage.setTitle("Aplicación para el apoyo del tratamiento de Alzheimer");
+			primaryStage.getIcons().add(new Image("LogoTemp.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

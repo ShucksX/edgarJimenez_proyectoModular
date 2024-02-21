@@ -73,6 +73,7 @@ public class VerResultadosScreen {
 		Background background =
 		        new Background(backgroundFill);
 		layout.setBackground(background);
+		layout.setPadding(new Insets(20,10,10,10));
 		
 		//Set Scene
 		verResultadoScene = new Scene(layout,Utilities.windowWidth,Utilities.windowHeight);

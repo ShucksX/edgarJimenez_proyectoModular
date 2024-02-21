@@ -80,6 +80,7 @@ public class ResultadosScreen {
 		Background background =
 		        new Background(backgroundFill);
 		layout.setBackground(background);
+		layout.setPadding(new Insets(20,10,10,10));
 		
 		//Set Scene
 		resultadoScene = new Scene(layout,Utilities.windowWidth,Utilities.windowHeight);

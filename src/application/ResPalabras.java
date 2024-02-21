@@ -104,7 +104,6 @@ public class ResPalabras {
 		TableColumn<Palabra, String> fecharesultado = new TableColumn <> ("Fecha del resultado");
 		fecharesultado.setCellValueFactory(cellData -> cellData.getValue().fechaResProperty());
 		TableColumn<Palabra, String> puntos = new TableColumn <> ("Aciertos sobre 3");
-		botonGrafica.setOnAction(e->ventanaGrafica(table));
 		
 		puntos.setCellValueFactory(cellData -> cellData.getValue().puntosProperty());
 		if (mode) {
@@ -132,6 +131,11 @@ public class ResPalabras {
 			AlertBox.display("Error", "La conexion al servidor se interrumpio");
 			e.printStackTrace();
 		}
+		table.setMinWidth(600);
+		table.setMinHeight(600);
+		
+		botonGrafica.setOnAction(e->ventanaGrafica(table));
+
 		
 		Insets inset = new Insets(0,0,0,10);
 		Label txtId = new Label ("ID:");

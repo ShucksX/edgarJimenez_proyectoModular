@@ -77,6 +77,7 @@ public class ClienteScreen {
 		
 		center.getChildren().addAll(lblTitulo,botonLaberinto,botonMemoPalabras,botonSopa,
 				botonColores,botonResultado,botonSucursales,botonCS);
+		center.setPadding(new Insets(20,0,0,0));
 		
 		Button botonConfig = new Button();
 		Image img = new Image("config.png");

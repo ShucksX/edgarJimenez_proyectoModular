@@ -113,6 +113,8 @@ public class ResLaberinto {
 			AlertBox.display("Error", "La conexion al servidor se interrumpio");
 			e.printStackTrace();
 		}
+		table.setMinWidth(600);
+		table.setMinHeight(600);
 		
 		botonGrafica.setOnAction(e->ventanaGrafica(table));
 		

@@ -103,6 +103,8 @@ public class SucursalesScreen {
 			AlertBox.display("Error", "La conexion al servidor se interrumpio");
 			e.printStackTrace();
 		}
+		table.setMinWidth(600);
+		table.setMinHeight(600);
 		
 		Insets inset = new Insets(0,0,0,10);
 		Label txtId = new Label ("ID:");

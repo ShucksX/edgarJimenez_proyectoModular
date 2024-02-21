@@ -86,7 +86,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 
 	    VBox layout = new VBox();
 		layout.setSpacing(VBOX_SPACING);
-		layout.setPadding(new Insets(10,10,10,10));
+		layout.setPadding(new Insets(80,10,10,10));
 		layout.setAlignment(Pos.TOP_CENTER);
 		
 	    
@@ -224,7 +224,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     public void gcPrintGameBoard() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                gc.fillText(String.valueOf(game.getBoardPos(i, j)), (25 + (20 * j)), (100 + (20 * i)));
+                gc.fillText(String.valueOf(game.getBoardPos(i, j)), (125 + (20 * j)), (100 + (20 * i)));
             }
         }
     }
@@ -233,9 +233,9 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     public void showSelection() {
         gc.save(); // Saves gc state before printing
         gc.setFill(Color.BLACK);
-        gc.fillRect((22 + (20 * colSelection)), (88 + (20 * rowSelection)), 15, 15);
+        gc.fillRect((122 + (20 * colSelection)), (88 + (20 * rowSelection)), 15, 15);
         gc.setFill(Color.WHITE);
-        gc.fillText(String.valueOf(game.getBoardPos(rowSelection, colSelection)), (25 + (20 * colSelection)),
+        gc.fillText(String.valueOf(game.getBoardPos(rowSelection, colSelection)), (125 + (20 * colSelection)),
                 (100 + (20 * rowSelection)));
         gc.restore(); // Restores saved gc state
     }

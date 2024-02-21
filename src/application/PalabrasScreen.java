@@ -68,7 +68,7 @@ public class PalabrasScreen {
 		
 		lblDisclaimer1 = new Label("Memorice estas palabras y regrese dentro de un dia");
 		lblDisclaimer1.setFont(fontTexto);
-		lblDisclaimer2 = new Label("Por favor no anote estas palabras o similar.");
+		lblDisclaimer2 = new Label("Por favor no anote estas palabras, intente recordarlas por su cuenta.");
 		lblDisclaimer2.setWrapText(true);
 		lblDisclaimer2.setFont(fontTexto);
 		
@@ -113,6 +113,7 @@ public class PalabrasScreen {
 		
 		fieldPalabra1 = new TextField();
 		fieldPalabra1.setPromptText("Primer palabra");
+		fieldPalabra1.setMaxWidth(400);
 		fieldPalabra1.setFont(fontTexto);
 
 		lblPalabra2 = new Label("Segunda palabra");
@@ -120,6 +121,7 @@ public class PalabrasScreen {
 
 		fieldPalabra2 = new TextField();
 		fieldPalabra2.setPromptText("Segunda palabra");
+		fieldPalabra2.setMaxWidth(400);
 		fieldPalabra2.setFont(fontTexto);
 		
 		lblPalabra3 = new Label("Tercer palabra");
@@ -127,6 +129,7 @@ public class PalabrasScreen {
 
 		fieldPalabra3 = new TextField();
 		fieldPalabra3.setPromptText("Tercer palabra");
+		fieldPalabra3.setMaxWidth(400);
 		fieldPalabra3.setFont(fontTexto);
 		
 		botonVolver = new Button();
@@ -233,7 +236,7 @@ public class PalabrasScreen {
 		Background background =
 		        new Background(backgroundFill);
 		layout.setBackground(background);
-		layout.setPadding(new Insets(10,15,10,15));
+		layout.setPadding(new Insets(170,15,10,15));
 		//Set Scene
 		palabrasScene = new Scene(layout,Utilities.windowWidth,Utilities.windowHeight);
 		palabrasScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -252,7 +255,7 @@ public class PalabrasScreen {
 		Background background =
 		        new Background(backgroundFill);
 		layout.setBackground(background);
-		layout.setPadding(new Insets(10,15,10,15));
+		layout.setPadding(new Insets(130,15,10,15));
 
 		//Set Scene
 		palabrasScene = new Scene(layout,Utilities.windowWidth,Utilities.windowHeight);
