@@ -17,10 +17,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class ClienteScreen {
 	private Scene clienteScene;
-	private Button botonCS,botonLaberinto,botonMemoPalabras,botonSopa,botonColores, botonResultado,botonSucursales;
+	private Button botonCS,botonLaberinto,botonMemoPalabras,botonSopa,botonColores, botonResultado,botonChat, botonSucursales;
 	public ClienteScreen(String userId) {
 		BorderPane layout = new BorderPane();
 		
@@ -70,13 +71,19 @@ public class ClienteScreen {
 		botonSucursales.setMinWidth(minwidth);
 		botonSucursales.setFont(fontTexto);
 		
+		botonChat = new Button();
+		botonChat.setText("Utiliza chatbot si tienes dudas");
+		botonChat.setMinWidth(320);
+		botonChat.setFont(fontTexto);
+		botonChat.setOnAction(e-> changeSceneChat());
+		
 		botonCS = new Button();
 		botonCS.setText("Cerrar sesion");
 		botonCS.setMinWidth(minwidth);
 		botonCS.setFont(fontTexto);
 		
 		center.getChildren().addAll(lblTitulo,botonLaberinto,botonMemoPalabras,botonSopa,
-				botonColores,botonResultado,botonSucursales,botonCS);
+				botonColores,botonResultado,botonSucursales,botonChat,botonCS);
 		center.setPadding(new Insets(20,0,0,0));
 		
 		Button botonConfig = new Button();
@@ -134,6 +141,19 @@ public class ClienteScreen {
 	
 	public Scene getScene() {
 		return clienteScene;
+	}
+	
+	public void changeSceneChat() {
+		Stage window = new Stage();
+		
+		window.setTitle("Chatbot para dudas");
+		window.setMinWidth(350);
+		window.setResizable(true);
+		
+		ChatBotScreen sceneChatBot = new ChatBotScreen();
+		
+		window.setScene(sceneChatBot.getScene());
+		window.show();
 	}
 	
 	private void openConfig(String userId) {

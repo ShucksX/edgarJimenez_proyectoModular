@@ -71,8 +71,6 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 		instrucciones3.setFont(fontTexto);
 		Label instrucciones4 = new Label("Retroceso/Delete -> Borrar letra     Escape -> Abandonar test");
 		instrucciones4.setFont(fontTexto);
-		Label palabras = new Label("Palabras a encontrar:");
-		palabras.setFont(fontTexto);
 		
         boardSize = game.getBoardSize();
 		canvas = new Canvas(windowSize, windowSize);
@@ -92,7 +90,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 	    
 	    timer = new MyTimer();
 		
-	    layout.getChildren().addAll(lblTitulo,instrucciones1,instrucciones2,instrucciones3,instrucciones4,palabras,canvas,keyboardNode);
+	    layout.getChildren().addAll(lblTitulo,instrucciones1,instrucciones2,instrucciones3,instrucciones4,canvas,keyboardNode);
 	    BackgroundFill backgroundFill =
 		        new BackgroundFill(
 		                Color.valueOf("#b6d8f2"),
@@ -201,9 +199,9 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 	public void printWordList() {
         int rowCounter = 0;
         int colCounter = 0;
-        int indent = 15;
+        int indent = 30;
         for (int i = 0; i < game.getWordListSize(); i++) {
-            gc.fillText(game.getWordListValue(i), (indent + (125 * colCounter)), (indent + (20 * rowCounter)));
+            gc.fillText(game.getWordListValue(i), (indent + 40 + (125 * colCounter)), (indent  + (20 * rowCounter)));
             colCounter++;
             if (colCounter == 4) {
                 colCounter = 0;
@@ -222,9 +220,14 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     }
 
     public void gcPrintGameBoard() {
+    	gc.setFill(Color.ORANGE);
+        gc.fillRect(0,0, 580, 450);
+        gc.setFill(Color.WHITE);
+        gc.fillRect(10,10, 560, 430);
+    	gc.setFill(Color.BLACK);
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                gc.fillText(String.valueOf(game.getBoardPos(i, j)), (125 + (20 * j)), (100 + (20 * i)));
+                gc.fillText(String.valueOf(game.getBoardPos(i, j)), (165 + (20 * j)), (100 + (20 * i)));
             }
         }
     }
@@ -233,15 +236,15 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     public void showSelection() {
         gc.save(); // Saves gc state before printing
         gc.setFill(Color.BLACK);
-        gc.fillRect((122 + (20 * colSelection)), (88 + (20 * rowSelection)), 15, 15);
+        gc.fillRect((162 + (20 * colSelection)), (88 + (20 * rowSelection)), 15, 15);
         gc.setFill(Color.WHITE);
-        gc.fillText(String.valueOf(game.getBoardPos(rowSelection, colSelection)), (125 + (20 * colSelection)),
+        gc.fillText(String.valueOf(game.getBoardPos(rowSelection, colSelection)), (165 + (20 * colSelection)),
                 (100 + (20 * rowSelection)));
         gc.restore(); // Restores saved gc state
     }
 
     public void printSelectedWord() {
-        gc.fillText("Palabra seleccionada: " + wordIn, 15, 75);
+        gc.fillText("Palabra seleccionada: " + wordIn, 30, 75);
     }
 
     public void checkForEnd(Stage gameStage) {

@@ -18,10 +18,14 @@ public class ConfirmBox {
 	public static boolean display (String title, String messsage) {
 		Stage window = new Stage();
 		
+		
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(350);
 		window.setResizable(false);
+		window.setOnCloseRequest(event -> {
+		    answer = false;
+		});
 		
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		Label label = new Label();
@@ -58,6 +62,8 @@ public class ConfirmBox {
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
 		window.showAndWait();
+		
+		
 		
 		return answer;
 	}

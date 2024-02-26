@@ -38,7 +38,7 @@ public class AddAdminScreen {
 	public AddAdminScreen() {
 		
 		BorderPane layout = new BorderPane();
-		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,12);
+		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 
 		
 		VBox top = new VBox();

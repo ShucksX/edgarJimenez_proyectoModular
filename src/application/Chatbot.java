@@ -108,6 +108,9 @@ public class Chatbot {
 		inputs.get(3).add("¿donde resultados?");
 		inputs.get(3).add("donde resultados?");
 		inputs.get(3).add("donde resultados");
+		inputs.get(3).add("¿donde estan mis resultados?");
+		inputs.get(3).add("donde estan mis resultados?");
+		inputs.get(3).add("donde estan mis resultados");
 		inputs.get(3).add("ya hice mis pruebas");
 		inputs.get(3).add("¿donde puedo ver mis resultados?");
 		//Pregunta 3
