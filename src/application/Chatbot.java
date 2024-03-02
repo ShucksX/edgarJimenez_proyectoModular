@@ -76,18 +76,37 @@ public class Chatbot {
 		//Saludos
 		inputs.add(new ArrayList<String>());
 		inputs.get(0).add("hola");
+		inputs.get(0).add("hola!");
+
 		inputs.get(0).add("holaa");
 		inputs.get(0).add("saludos");
+		inputs.get(0).add("saludo");
 		inputs.get(0).add("buen dia");
+		inputs.get(0).add("buen dia!");
 		inputs.get(0).add("buenos dias");
+		inputs.get(0).add("buenos dias!");
 		inputs.get(0).add("buenas tardes");
 		inputs.get(0).add("buenas noches");
+		inputs.get(0).add("buenas tardes!");
+		inputs.get(0).add("buenas noches!");
 		//Pregunta 1
 		inputs.add(new ArrayList<String>());
 		inputs.get(1).add("¿tengo alzheimer?");
 		inputs.get(1).add("¿tengo alzheimer");
 		inputs.get(1).add("tengo alzheimer?");
 		inputs.get(1).add("tengo alzheimer");
+		inputs.get(1).add("¿tendre alzheimer?");
+		inputs.get(1).add("¿tendre alzheimer");
+		inputs.get(1).add("tendre alzheimer?");
+		inputs.get(1).add("tendre alzheimer");
+		inputs.get(1).add("¿sufro alzheimer?");
+		inputs.get(1).add("¿sufro alzheimer");
+		inputs.get(1).add("sufro alzheimer?");
+		inputs.get(1).add("sufro alzheimer");
+		inputs.get(1).add("¿sufrir alzheimer?");
+		inputs.get(1).add("¿sufrir alzheimer");
+		inputs.get(1).add("sufrir alzheimer?");
+		inputs.get(1).add("sufrir alzheimer");
 		//Despedida
 		inputs.add(new ArrayList<String>());
 		inputs.get(2).add("adios");
@@ -99,6 +118,9 @@ public class Chatbot {
 		inputs.get(2).add("como cierro la ventana?");
 		inputs.get(2).add("¿como cierro la ventana?");
 		inputs.get(2).add("¿como cierro la ventana");
+		inputs.get(2).add("como cerrar la ventana?");
+		inputs.get(2).add("¿como cerrar la ventana?");
+		inputs.get(2).add("¿como cerrar la ventana");
 		//Pregunta 2
 		inputs.add(new ArrayList<String>());
 		inputs.get(3).add("¿donde puedo ver mis resultados?");
