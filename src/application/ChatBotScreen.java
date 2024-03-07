@@ -126,7 +126,7 @@ public class ChatBotScreen {
 	}
 	
 	private String getResponse(String input) {
-		return chatbot.getResponse(input);
+		return chatbot.detectSentence(input);
 	}
 	
 	public Scene getScene() {

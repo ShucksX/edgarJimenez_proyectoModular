@@ -1,6 +1,16 @@
 package application;
 
 import java.util.ArrayList;
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.sentdetect.SentenceModel;
+import opennlp.tools.util.Span;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+
 
 public class Chatbot {
 	private String response;
@@ -12,21 +22,66 @@ public class Chatbot {
 		
 	}
 	
-	public String getResponse(String input) {
+	public String detectSentence(String rawText){
+        try {
+        	String response = "";
+
+            //Load the sentence detection model
+            InputStream is = new FileInputStream("src\\es-sent.bin");
+            SentenceModel modelObj = new SentenceModel(is);
+
+            //Break raw text into sentences
+            SentenceDetectorME detectorME = new SentenceDetectorME(modelObj);
+            String[] detectedSen = detectorME.sentDetect(rawText);
+            System.out.println("All sentences detected are:");
+            System.out.println(Arrays.toString(detectedSen));
+            for(String sentence: detectedSen) {
+            	String nuevaRes = getResponse(sentence);
+            	if (!nuevaRes.equalsIgnoreCase("No entiendo lo que me dices")) {
+            		response = response + nuevaRes;
+            	}
+            }
+            if (response.equalsIgnoreCase("")) {
+        		response = "No entiendo lo que me dices";
+        	}
+            else if (response.equalsIgnoreCase("Hola! ")) {
+        		response = response + "¿Que dudas tienes?";
+        	}
+
+            //Find position of all sentences
+            Span[] spans = detectorME.sentPosDetect(rawText);
+            System.out.println("Positions of all detected sentences:");
+            for(Span span: spans){
+                System.out.println(span);
+            }
+            return response;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return "No entiendo lo que me dices";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "No entiendo lo que me dices";
+        }
+    }
+	
+	public String getResponse(String inputI) {
+		String input = inputI.replace(".", "");
+		System.out.println(input);
 		if(findInArray(0,input,true)) {
-			response = "Hola! ¿Que dudas tienes?";
+			response = "Hola! ";
 			return response;
 		}
 		else if(findInArray(1,input,false)) {
-			response = "No puedo asegurarte si tienes esta condicion, pero te recomendamos hacer los tests en esta aplicacion para observar como se comporta tu memoria y concentracion. Si considera que estos aspectos empeoran, puede comunicarse con un centro de atencion en la ventana de Centros de Atencion para recibir consulta y ayuda profesional";
+			response = "No puedo asegurarte si tienes esta condicion, pero te recomendamos hacer los tests en esta aplicacion para observar como se comporta tu memoria y concentracion. Si considera que estos aspectos empeoran, puede comunicarse con un centro de atencion en la ventana de Centros de Atencion para recibir consulta y ayuda profesional ";
 			return response;
 		}
 		else if(findInArray(2,input,false)) {
-			response = "Nos vemos! Si quieres cerrar esta ventana solo presiona la cruz en la esquina superior.";
+			response = "Nos vemos! Si quieres cerrar esta ventana solo presiona la cruz en la esquina superior. ";
 			return response;
 		}
 		else if (findInArray(3,input,false)){
-			response = "Pare ver tus resultados solo cierra esta ventana y presiona el boton correspondiente a la prueba de la quieres ver los resultados, en la ventana de resultados. Aqui veras los resultados y puedes observar una grafica de los mismos.";
+			response = "Pare ver tus resultados solo cierra esta ventana y presiona el boton correspondiente a la prueba de la quieres ver los resultados, en la ventana de resultados. Aqui veras los resultados y puedes observar una grafica de los mismos. ";
 			return response;
 		}
 		else if (findInArray(4,input,false)) {
@@ -38,19 +93,19 @@ public class Chatbot {
 			return response;
 		}
 		else if(findInArray(6,input,false)) {
-			response = "En esta aplicacion puedes intentar 4 pruebas distintas. La primera es un laberinto, en donde deberas mover tu punto hacia la salida usando las flechas de direcciones, deberas hacerlo 5 veces y se medira el tiempo tardado. La siguiente prueba es la sopa de letras, es una sopa de letras tradicional en donde deberas encontrar palabras escondidas entra varias letras aleatorias y se medira el tiempo que tardes en hacerlo. La siguiente pruebe es la memorizacion de palabras, en donde deberas recordar 3 palabras en un orden, esperar un dia y decir las palabras que se te pidio recordar. Finalmente, la ultima prueba son los colores intermitentes, en donde deberas prestar atencion al color y figura que se te muestra y rapidamente localizar en que posicion aparece despues de un tiempo.";
+			response = "En esta aplicacion puedes intentar 4 pruebas distintas. La primera es un laberinto, en donde deberas mover tu punto hacia la salida usando las flechas de direcciones, deberas hacerlo 5 veces y se medira el tiempo tardado. La siguiente prueba es la sopa de letras, es una sopa de letras tradicional en donde deberas encontrar palabras escondidas entra varias letras aleatorias y se medira el tiempo que tardes en hacerlo. La siguiente pruebe es la memorizacion de palabras, en donde deberas recordar 3 palabras en un orden, esperar un dia y decir las palabras que se te pidio recordar. Finalmente, la ultima prueba son los colores intermitentes, en donde deberas prestar atencion al color y figura que se te muestra y rapidamente localizar en que posicion aparece despues de un tiempo. ";
 			return response;
 		}
 		else if(findInArray(7,input,false)) {
-			response = "Soy un chatbot que fue creado por Edgar Jimenez Aceves durante su estancia en el Centro Universitario de Ciencias Exactas e Ingenierias.";
+			response = "Soy un chatbot que fue creado por Edgar Jimenez Aceves durante su estancia en el Centro Universitario de Ciencias Exactas e Ingenierias. ";
 			return response;
 		}
 		else if(findInArray(8,input,false)) {
-			response = "No tengo ningun nombre pero espero poder ayudarte con cualquier duda que tenga de igual manera!";
+			response = "No tengo ningun nombre pero espero poder ayudarte con cualquier duda que tenga de igual manera! ";
 			return response;
 		}
 		else {
-			response = "No entiendo lo que me dices";
+			response = "No entiendo parte de lo que me dices. ";
 			return response;
 		}
 	}
@@ -133,6 +188,9 @@ public class Chatbot {
 		inputs.get(3).add("¿donde estan mis resultados?");
 		inputs.get(3).add("donde estan mis resultados?");
 		inputs.get(3).add("donde estan mis resultados");
+		inputs.get(3).add("¿donde estan mis pruebas?");
+		inputs.get(3).add("donde estan mis pruebas?");
+		inputs.get(3).add("donde estan mis pruebas");
 		inputs.get(3).add("ya hice mis pruebas");
 		inputs.get(3).add("¿donde puedo ver mis resultados?");
 		//Pregunta 3
