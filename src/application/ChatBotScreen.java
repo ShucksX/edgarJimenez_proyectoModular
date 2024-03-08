@@ -42,6 +42,11 @@ public class ChatBotScreen {
 		GridPane chat = new GridPane();
 	    chat.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 	    chat.setVgap(10);
+	    
+	    ScrollPane center = new ScrollPane(chat);
+	    center.setFitToWidth(true);
+	    center.setPadding(new Insets(15,15,15,15));
+	    
 
 	    ColumnConstraints c1 = new ColumnConstraints();
 	    c1.setPercentWidth(100);
@@ -74,6 +79,11 @@ public class ChatBotScreen {
 	        chatMessage.getStyleClass().add("chat-bubble");
 	        GridPane.setHalignment(chatMessage, HPos.LEFT);
 	        chat.addRow(cont, chatMessage);
+	        PauseTransition delay3 = new PauseTransition(Duration.millis(10));
+			delay3.setOnFinished( event2-> {
+				center.setVvalue(1.0);
+			});
+			delay3.play();
 	        cont++;
 	        PauseTransition delay = new PauseTransition(Duration.seconds(1));
 			delay.setOnFinished( event -> {
@@ -89,9 +99,14 @@ public class ChatBotScreen {
 		        chat.addRow(cont, chatResponse);
 		        enviar.setDisable(false);
 		        cont++;
+				PauseTransition delay2 = new PauseTransition(Duration.millis(10));
+				delay2.setOnFinished( event2-> {
+					center.setVvalue(1.0);
+				});
+				delay2.play();
 			});
+			
 			delay.play();
-	        
 			enviar.setDisable(true);
 			input.setText("");
 			
@@ -102,17 +117,12 @@ public class ChatBotScreen {
 		bottom.setPadding(new Insets(1,10,1,10));
 		bottom.getChildren().addAll(input,enviar);
 		
-		
-		ScrollPane center = new ScrollPane(chat);
-	    center.setFitToWidth(true);
-	    center.setPadding(new Insets(15,15,15,15));
-	    BackgroundFill backgroundFill =
+		BackgroundFill backgroundFill =
 		        new BackgroundFill(
 		                Color.valueOf("#92b9e8"),
 		                new CornerRadii(10),
 		                new Insets(10)
 		                );
-
 		Background background =
 		        new Background(backgroundFill);
 		center.setBackground(background);
@@ -126,7 +136,7 @@ public class ChatBotScreen {
 	}
 	
 	private String getResponse(String input) {
-		return chatbot.detectSentence(input);
+		return chatbot.tokenizeBasedOnModel(input);
 	}
 	
 	public Scene getScene() {
