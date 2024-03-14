@@ -82,7 +82,7 @@ public class ResColores {
 		botonGrafica.setFont(fontTexto);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a menu de resultados");
+		botonVolver.setText("Volver a menú de resultados");
 		botonVolver.setMinWidth(minwidth);
 		botonVolver.setFont(fontTexto);
 		botonVolver.setOnAction(e-> primaryStage.setScene(returnScene));
@@ -108,10 +108,10 @@ public class ResColores {
 			else
 				fillTableId(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -150,10 +150,10 @@ public class ResColores {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -341,7 +341,7 @@ public class ResColores {
         String textSLR = "Su desempeño parece ";
         
         if (series.getData().size()<=2) {
-        	textSLR = "Le recomendamos hacer mas tests antes de realizar conclusiones";
+        	textSLR = "Le recomendamos hacer más test antes de realizar conclusiones";
         }
         else {
 	        if (slr.getBeta1() < 0) {
@@ -355,11 +355,11 @@ public class ResColores {
         
         Label sucursal = new Label();
         sucursal.setFont(fontTexto);
-        sucursal.setText("Si considera necesario asistir a un centro de atencion:");
+        sucursal.setText("Si considera necesario asistir a un centro de atención:");
         
         Label sucursal2 = new Label();
         sucursal2.setFont(fontTexto);
-        sucursal2.setText("Le invitamos a visitar la ventana de sucursales en la seleccion de tests");
+        sucursal2.setText("Le invitamos a visitar la ventana de sucursales en la selección de test");
         sucursal2.setWrapText(true);
         
         Label edadLabel = new Label();
@@ -367,18 +367,18 @@ public class ResColores {
         try {
 			int edad = Utilities.calcularEdad(userID);
 			if (edad < 40) {
-				edadLabel.setText("Considere que por su edad, es menos probable que tenga Alzheimer");
+				edadLabel.setText("Considere que, por su edad, es menos probable que tenga Alzheimer");
 			}
 		} catch (IOException e) {
-			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo más tarde");
 			e.printStackTrace();
 			return;
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Conexion interrumpida, intente de nuevo más tarde");
 			e.printStackTrace();
 			return;
 		} catch (ParseException e) {
-			AlertBox.display("Error", "Hubo un error, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, intente de nuevo más tarde");
 			e.printStackTrace();
 			return;
 		}

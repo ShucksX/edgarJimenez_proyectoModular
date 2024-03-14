@@ -102,7 +102,7 @@ public class RegistroScreen {
 				if (contrasena.getText().equals(contrasena2.getText()))
 					registrar();
 				else {
-					AlertBox.display("Error", "Las contraseñas en ambos campos no son las mismas\nAsegurase de escribir la misma contraseña en ambos campos");
+					AlertBox.display("Error", "Las contraseñas en ambos campos no son las mismas\nAsegúrese de escribir la misma contraseña en ambos campos");
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -114,7 +114,7 @@ public class RegistroScreen {
 		botonRegistro.setDefaultButton(true);
 		
 		botonLogin = new Button();
-		botonLogin.setText("¿Ya tienes una cuenta? Cliquea aqui");
+		botonLogin.setText("¿Ya tienes una cuenta? Cliquea aquí");
 		botonLogin.setMinWidth(minwidth);
 		botonLogin.setFont(fontTexto);
 
@@ -158,7 +158,7 @@ public class RegistroScreen {
 			 //System.out.println(txtFechaNac);
 		}
 		else {
-			AlertBox.display("Error", "Por favor asegurese de llenar todos los campos");
+			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
 			return;
 		}
 		String txtPais = Utilities.stringToUTF(pais.getText());

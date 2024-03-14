@@ -235,7 +235,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 					AlertBox.display("Error", "La conexion al servidor se interrumpio");
 					e.printStackTrace();
 				} catch (InterruptedException e) {
-					AlertBox.display("Error", "La conexion al servidor se interrumpio");
+					AlertBox.display("Error", "La conexión al servidor se interrumpió");
 					e.printStackTrace();
 				}
         	}

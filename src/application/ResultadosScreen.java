@@ -35,7 +35,7 @@ public class ResultadosScreen {
 		lblTitulo.setFont(fontTitulo);
 		
 		botonPalabra = new Button();
-		botonPalabra.setText("Memorizacion de palabras");
+		botonPalabra.setText("Memorización de palabras");
 		botonPalabra.setMinWidth(320);
 		botonPalabra.setFont(fontTexto);
 		botonPalabra.setOnAction(e-> changeScenePalabra());
@@ -59,13 +59,13 @@ public class ResultadosScreen {
 		botonColores.setOnAction(e-> changeSceneColores());
 		
 		botonChat = new Button();
-		botonChat.setText("Utiliza chatbot si tienes dudas");
+		botonChat.setText("Utiliza el chatbot si tienes dudas");
 		botonChat.setMinWidth(320);
 		botonChat.setFont(fontTexto);
 		botonChat.setOnAction(e-> changeSceneChat());
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a seleccion de tests");
+		botonVolver.setText("Volver a selección de test");
 		botonVolver.setMinWidth(320);
 		botonVolver.setFont(fontTexto);
 		
@@ -148,3 +148,4 @@ public class ResultadosScreen {
 		return resultadoScene;
 	}
 }
+

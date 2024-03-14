@@ -34,7 +34,7 @@ public class VerResultadosScreen {
 		lblTitulo.setFont(fontTitulo);
 		
 		botonPalabra = new Button();
-		botonPalabra.setText("Memorizacion de palabras");
+		botonPalabra.setText("Memorización de palabras");
 		botonPalabra.setMinWidth(320);
 		botonPalabra.setFont(fontTexto);
 		botonPalabra.setOnAction(e-> changeScenePalabra());

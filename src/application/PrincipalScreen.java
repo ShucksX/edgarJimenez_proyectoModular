@@ -46,7 +46,7 @@ public class PrincipalScreen {
 		botonLogin.setDefaultButton(true);
 		
 		botonRegistro = new Button();
-		botonRegistro.setText("Registrate aqui");
+		botonRegistro.setText("Regístrate aquí");
 		botonRegistro.setMinWidth(200);
 		botonRegistro.setFont(fontTexto);
 

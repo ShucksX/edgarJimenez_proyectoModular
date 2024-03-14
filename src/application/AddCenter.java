@@ -45,7 +45,7 @@ public class AddCenter {
 		fieldNombre.setPromptText("Nombre");
 		fieldNombre.setFont(fontTexto);
 		fieldPais = new TextField();
-		fieldPais.setPromptText("Pais");
+		fieldPais.setPromptText("País");
 		fieldPais.setFont(fontTexto);
 		fieldMunicipio = new TextField();
 		fieldMunicipio.setPromptText("Municipio");
@@ -54,10 +54,10 @@ public class AddCenter {
 		fieldLocalidad.setPromptText("Localidad");
 		fieldLocalidad.setFont(fontTexto);
 		fieldDireccion = new TextField();
-		fieldDireccion.setPromptText("Direccion");
+		fieldDireccion.setPromptText("Dirección");
 		fieldDireccion.setFont(fontTexto);
 		fieldNumTel = new TextField();
-		fieldNumTel.setPromptText("Numero de telefono");
+		fieldNumTel.setPromptText("Numero de teléfono");
 		fieldNumTel.setFont(fontTexto);
 		fieldCorreo = new TextField();
 		fieldCorreo.setPromptText("Correo");
@@ -77,10 +77,10 @@ public class AddCenter {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error","Error al conectar con el servidor");
+				AlertBox.display("Error", "Error al conectar con el servidor");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error","Hubo una interrupcion en la conexion");
+				AlertBox.display("Error", "Hubo una interrupción en la conexión");
 				e1.printStackTrace();
 			}
 		});
@@ -127,7 +127,7 @@ public class AddCenter {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("exito")) {
-			AlertBox.display("Exito", "Se registro el centro con exito");
+			AlertBox.display("Exito", "Se registró el centro con éxito");
 			return true; 
 		}
 		else {
@@ -136,3 +136,4 @@ public class AddCenter {
 		}
 	}
 }
+

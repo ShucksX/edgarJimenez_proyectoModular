@@ -114,7 +114,7 @@ public class Main extends Application {
 				primaryStage.setScene(palabrasScene.getScene());
 			}
 			else if(respuesta.contains("temprano#")){
-				AlertBox.display("Su test no esta disponible", "Aun no ha pasado un dia desde que inicio el test\nIntente de nuevo mas tarde.");
+				AlertBox.display("Su test no está disponible", "Aun no ha pasado un dia desde que inicio el test\nIntente de nuevo más tarde.");
 			}
 			else {
 				palabrasScene.setupScene2(primaryStage,userId,clienteScene,respuesta);
@@ -123,7 +123,7 @@ public class Main extends Application {
 				primaryStage.setScene(palabrasScene.getScene());
 			}
 		} catch (IOException e) {
-			AlertBox.display("Error", "Hubo un error al conectar a la base de datos\nRevise su conexion e intente de nuevo");
+			AlertBox.display("Error", "Hubo un error al conectar a la base de datos\nRevise su conexión e intente de nuevo");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			AlertBox.display("Error", "Conexion interrumpida");
@@ -176,10 +176,10 @@ public class Main extends Application {
 			try {
 				addAdminScene.removeAdmin(primaryStage, principalScene.getScene(),userId);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -201,7 +201,7 @@ public class Main extends Application {
 		if (response.body().contains("unv"))
 			AlertBox.display("Error", "Por favor verifique su cuenta en su correo");
 		else if (response.body().contains("noe"))
-			AlertBox.display("Error", "No se encontro su cuenta\nVerifique sus datos");
+			AlertBox.display("Error", "No se encontró su cuenta\nVerifique sus datos");
 		else if (response.body().contains("adm")) {
 			userId = response.body().substring(3);
 			System.out.println(userId);
@@ -223,7 +223,7 @@ public class Main extends Application {
 		}
 		else {
 			System.out.println(response.body());
-			AlertBox.display("Error", "Hubo un error, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, intente de nuevo más tarde");
 		}
 	}
 	

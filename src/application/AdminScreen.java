@@ -36,7 +36,7 @@ public class AdminScreen {
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		
-		Label lblTitulo = new Label ("Menu de administrador");
+		Label lblTitulo = new Label ("Menú de administrador");
 		lblTitulo.setFont(fontTitulo);
 		
 		botonSucursales = new Button();
@@ -119,7 +119,7 @@ public class AdminScreen {
 			AlertBox.display("Error", "Hubo un error al conectar con el servidor");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida");
+			AlertBox.display("Error", "Conexión interrumpida");
 			e.printStackTrace();
 		}
 	}
