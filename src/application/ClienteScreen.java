@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 public class ClienteScreen {
 	private Scene clienteScene;
-	private Button botonCS,botonLaberinto,botonMemoPalabras,botonSopa,botonColores, botonResultado,botonChat, botonSucursales;
+	private Button botonCS,botonLaberinto,/*botonMemoPalabras,*/botonSiluetas,botonSopa,botonColores, botonResultado,botonChat, botonSucursales;
 	public ClienteScreen(String userId) {
 		BorderPane layout = new BorderPane();
 		
@@ -37,7 +37,7 @@ public class ClienteScreen {
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		
-		Label lblTitulo = new Label ("Seleccion de test");
+		Label lblTitulo = new Label ("Seleccion de ejercicios");
 		lblTitulo.setFont(fontTitulo);
 		
 		int minwidth = 300;
@@ -46,10 +46,16 @@ public class ClienteScreen {
 		botonLaberinto.setMinWidth(minwidth);
 		botonLaberinto.setFont(fontTexto);
 		
+		/*
 		botonMemoPalabras = new Button();
 		botonMemoPalabras.setText("Memorizar palabras");
 		botonMemoPalabras.setMinWidth(minwidth);
 		botonMemoPalabras.setFont(fontTexto);
+		*/
+		botonSiluetas = new Button();
+		botonSiluetas.setText("Siluetas");
+		botonSiluetas.setMinWidth(minwidth);
+		botonSiluetas.setFont(fontTexto);
 		
 		botonSopa = new Button();
 		botonSopa.setText("Sopa de letras");
@@ -82,7 +88,7 @@ public class ClienteScreen {
 		botonCS.setMinWidth(minwidth);
 		botonCS.setFont(fontTexto);
 		
-		center.getChildren().addAll(lblTitulo,botonLaberinto,botonMemoPalabras,botonSopa,
+		center.getChildren().addAll(lblTitulo,botonLaberinto,botonSiluetas,botonSopa,
 				botonColores,botonResultado,botonSucursales,botonChat,botonCS);
 		center.setPadding(new Insets(20,0,0,0));
 		
@@ -122,8 +128,11 @@ public class ClienteScreen {
 	public Button getBotonLaberinto() {
 		return botonLaberinto;
 	}
-	public Button getBotonMemoPalabras() {
+	/*public Button getBotonMemoPalabras() {
 		return botonMemoPalabras;
+	}*/
+	public Button getBotonSiluetas() {
+		return botonSiluetas;
 	}
 	public Button getBotonSopa() {
 		return botonSopa;

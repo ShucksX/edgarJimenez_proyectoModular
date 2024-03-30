@@ -51,21 +51,21 @@ public class ColoresScreen {
 		lblTitulo = new Label ("Colores intermitentes");
 		lblTitulo.setFont(fontTitulo);
 		
-		lblInstrucciones1 = new Label("A continuacion se le presentaran 6 colores por un segundo");
+		lblInstrucciones1 = new Label("A continuación se le presentaran 6 colores por un segundo");
 		lblInstrucciones1.setFont(fontTexto);
-		lblInstrucciones2 = new Label("Debera escoger la ubicacion del color que se le pide");
+		lblInstrucciones2 = new Label("Deberá escoger la ubicación del color que se le pide");
 		lblInstrucciones2.setFont(fontTexto);
-		lblInstrucciones3 = new Label("(Los colores tambien tendran una figura asociado)");
+		lblInstrucciones3 = new Label("(Los colores también tendrán una figura asociado)");
 		lblInstrucciones3.setFont(fontTexto);
 		
 		int minwidth = 300;
 		botonIniciar = new Button();
-		botonIniciar.setText("Iniciar test");
+		botonIniciar.setText("Iniciar ejercicio");
 		botonIniciar.setMinWidth(minwidth);
 		botonIniciar.setFont(fontTexto);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a seleccion de test");
+		botonVolver.setText("Volver a selección de ejercicios");
 		botonVolver.setMinWidth(minwidth);
 		botonVolver.setFont(fontTexto);
 
@@ -74,7 +74,7 @@ public class ColoresScreen {
 	
 	private void setupScene(Stage primaryStage) {
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
-		Label instruccion = new Label("Debe observar en que posicion se encuentra este color:");
+		Label instruccion = new Label("Debe observar en que posición se encuentra este color:");
 		instruccion.setFont(fontTexto);
 		
 		Random rand = new Random();
@@ -339,10 +339,10 @@ public class ColoresScreen {
 			try {
 				registrarResultadoBD(0);
 			} catch (IOException e) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e.printStackTrace();
 			} catch (InterruptedException e) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e.printStackTrace();
 			}
 			primaryStage.setScene(clienteScene.getScene());

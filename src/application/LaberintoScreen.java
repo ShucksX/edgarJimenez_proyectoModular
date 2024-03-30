@@ -35,7 +35,8 @@ import javafx.util.Duration;
 
 public class LaberintoScreen implements EventHandler<KeyEvent> {
 	final int windowSize = 800;
-	final int gcPadding = 100;
+	final int gcPadding = 120;
+	final int squareSize = 28;
 	private int boardSize;
 	private Laberinto maze;
 	private GraphicsContext gc;
@@ -81,7 +82,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 		Label lblInstrucciones2 = new Label ("Presione las flechas para mover el cursor");
 		lblInstrucciones2.setFont(fontInstrucciones);
 		
-		Label lblInstrucciones3 = new Label("Puede presionar la tecla de escape para abandonar el test");
+		Label lblInstrucciones3 = new Label("Puede presionar la tecla de escape para abandonar el ejercicio");
 		lblInstrucciones3.setFont(fontInstrucciones);
 		
 		boardSize = maze.getBoardSize();
@@ -196,28 +197,28 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
     public void gcPrintGameBoard() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-            	gc.fillText(" ", (gcPadding + (20 * j)),(20 * i));
+            	gc.fillText(" ", (gcPadding + (squareSize * j)),(squareSize * i));
             	if (maze.getBoardPos(i, j)) {
             		gc.setFill(Color.BLACK);
-                    gc.fillRect((gcPadding + (20 * j)), (20 * i),20,20);
+                    gc.fillRect((gcPadding + (squareSize * j)), (squareSize * i),squareSize,squareSize);
             	}
             	else {
             		gc.setFill(Color.WHITE);
-            		gc.fillRect((gcPadding + (20 * j)), (20 * i),20,20);
+            		gc.fillRect((gcPadding + (squareSize * j)), (squareSize * i),squareSize,squareSize);
             	}
             }
         }
         gc.setFill(Color.BLUE);
-        gc.fillRect((gcPadding + (20 * maze.getExitCol())), (20 * maze.getExitRow()), 20, 20);
+        gc.fillRect((gcPadding + (squareSize * maze.getExitCol())), (squareSize * maze.getExitRow()), squareSize, squareSize);
     }
     
     public void showSelection() {
         gc.save(); // Saves gc state before printing
         gc.setFill(Color.RED);
-        gc.fillRect((gcPadding + (20 * colSelection)), (20 * rowSelection), 20, 20);
+        gc.fillRect((gcPadding + (squareSize * colSelection)), (squareSize * rowSelection), squareSize, squareSize);
         gc.setFill(Color.WHITE);
-        gc.fillText(" ", (gcPadding + (20 * colSelection)),
-                (20 * rowSelection));
+        gc.fillText(" ", (gcPadding + (squareSize * colSelection)),
+                (squareSize * rowSelection));
         gc.restore(); // Restores saved gc state
     }
 	
@@ -235,7 +236,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 					AlertBox.display("Error", "La conexion al servidor se interrumpio");
 					e.printStackTrace();
 				} catch (InterruptedException e) {
-					AlertBox.display("Error", "La conexion al servidor se interrumpio");
+					AlertBox.display("Error", "La conexión al servidor se interrumpió");
 					e.printStackTrace();
 				}
         	}
@@ -252,7 +253,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
     }
 	
 	public void endGame(Stage gameStage) {
-		if (ConfirmBox.display("Salir del test", "¿Seguro que desea abandonar el test?")) {
+		if (ConfirmBox.display("Salir del ejercicio", "¿Seguro que desea abandonar el ejercicio?")) {
 	    	timeline.stop();
 	    	timer.stop();
 	        gameStage.setScene(endScene);

@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class ResultadosScreen {
 	private Scene resultadoScene;
-	private Button botonPalabra,botonLaberinto,botonSopa,botonColores,botonChat,botonVolver;
+	private Button botonSilueta,botonLaberinto,botonSopa,botonColores,botonChat,botonVolver;
 	private String userID;
 	private Stage primaryStage;
 	public ResultadosScreen(String userid, Stage primaryStage) {
@@ -34,11 +34,11 @@ public class ResultadosScreen {
 		Label lblTitulo = new Label ("Ver resultados");
 		lblTitulo.setFont(fontTitulo);
 		
-		botonPalabra = new Button();
-		botonPalabra.setText("Memorizacion de palabras");
-		botonPalabra.setMinWidth(320);
-		botonPalabra.setFont(fontTexto);
-		botonPalabra.setOnAction(e-> changeScenePalabra());
+		botonSilueta = new Button();
+		botonSilueta.setText("Siluetas");
+		botonSilueta.setMinWidth(320);
+		botonSilueta.setFont(fontTexto);
+		botonSilueta.setOnAction(e-> changeSceneSilueta());
 		
 		botonLaberinto = new Button();
 		botonLaberinto.setText("Laberinto");
@@ -59,17 +59,17 @@ public class ResultadosScreen {
 		botonColores.setOnAction(e-> changeSceneColores());
 		
 		botonChat = new Button();
-		botonChat.setText("Utiliza chatbot si tienes dudas");
+		botonChat.setText("Utiliza el chatbot si tienes dudas");
 		botonChat.setMinWidth(320);
 		botonChat.setFont(fontTexto);
 		botonChat.setOnAction(e-> changeSceneChat());
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a seleccion de tests");
+		botonVolver.setText("Volver a selección de ejercicios");
 		botonVolver.setMinWidth(320);
 		botonVolver.setFont(fontTexto);
 		
-		layout.getChildren().addAll(lblTitulo,botonPalabra,botonLaberinto,botonSopa,botonColores,botonChat,botonVolver);
+		layout.getChildren().addAll(lblTitulo,botonSilueta,botonLaberinto,botonSopa,botonColores,botonChat,botonVolver);
 		BackgroundFill backgroundFill =
 		        new BackgroundFill(
 		                Color.valueOf("#deaff0"),
@@ -87,9 +87,9 @@ public class ResultadosScreen {
 		resultadoScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 	
-	public void changeScenePalabra() {
-		ResPalabras sceneResPalabra = new ResPalabras(getScene(),primaryStage,false,userID);
-		primaryStage.setScene(sceneResPalabra.getScene());
+	public void changeSceneSilueta() {
+		ResSiluetas sceneResSilueta = new ResSiluetas(getScene(),primaryStage,false,userID);
+		primaryStage.setScene(sceneResSilueta.getScene());
 	}
 	
 	public void changeSceneLaberinto() {
@@ -120,8 +120,8 @@ public class ResultadosScreen {
 		window.show();
 	}
 	
-	public Button getBotonPalabra() {
-		return botonPalabra;
+	public Button getBotonSilueta() {
+		return botonSilueta;
 	}
 	
 	public Button getBotonLaberinto() {
@@ -148,3 +148,4 @@ public class ResultadosScreen {
 		return resultadoScene;
 	}
 }
+

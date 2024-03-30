@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class VerResultadosScreen {
 	private Scene verResultadoScene;
-	private Button botonPalabra,botonLaberinto,botonSopa,botonColores,botonVolver;
+	private Button botonSilueta,botonLaberinto,botonSopa,botonColores,botonVolver;
 	private Stage primaryStage;
 	private String userId;
 	public VerResultadosScreen(String userId,Stage primaryStage) {
@@ -33,11 +33,11 @@ public class VerResultadosScreen {
 		Label lblTitulo = new Label ("Ver resultados de usuarios");
 		lblTitulo.setFont(fontTitulo);
 		
-		botonPalabra = new Button();
-		botonPalabra.setText("Memorizacion de palabras");
-		botonPalabra.setMinWidth(320);
-		botonPalabra.setFont(fontTexto);
-		botonPalabra.setOnAction(e-> changeScenePalabra());
+		botonSilueta = new Button();
+		botonSilueta.setText("Siluetas");
+		botonSilueta.setMinWidth(320);
+		botonSilueta.setFont(fontTexto);
+		botonSilueta.setOnAction(e-> changeSceneSilueta());
 		
 		botonLaberinto = new Button();
 		botonLaberinto.setText("Laberinto");
@@ -62,7 +62,7 @@ public class VerResultadosScreen {
 		botonVolver.setMinWidth(320);
 		botonVolver.setFont(fontTexto);
 		
-		layout.getChildren().addAll(lblTitulo,botonPalabra,botonLaberinto,botonSopa,botonColores,botonVolver);
+		layout.getChildren().addAll(lblTitulo,botonSilueta,botonLaberinto,botonSopa,botonColores,botonVolver);
 		BackgroundFill backgroundFill =
 		        new BackgroundFill(
 		                Color.valueOf("#deaff0"),
@@ -80,9 +80,9 @@ public class VerResultadosScreen {
 		verResultadoScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 	
-	public void changeScenePalabra() {
-		ResPalabras sceneResPalabra = new ResPalabras(getScene(),primaryStage,true,userId);
-		primaryStage.setScene(sceneResPalabra.getScene());
+	public void changeSceneSilueta() {
+		ResSiluetas sceneResSilueta = new ResSiluetas(getScene(),primaryStage,true,userId);
+		primaryStage.setScene(sceneResSilueta.getScene());
 	}
 	
 	public void changeSceneLaberinto() {
@@ -100,8 +100,8 @@ public class VerResultadosScreen {
 		primaryStage.setScene(sceneResColores.getScene());
 	}
 	
-	public Button getBotonPalabra() {
-		return botonPalabra;
+	public Button getBotonSilueta() {
+		return botonSilueta;
 	}
 	
 	public Button getBotonLaberinto() {

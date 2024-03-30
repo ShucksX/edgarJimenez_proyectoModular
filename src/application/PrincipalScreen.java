@@ -29,8 +29,11 @@ public class PrincipalScreen {
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		
 		Label lblTitulo = new Label ("Aplicación para el apoyo del tratamiento de Alzheimer");
-		
 		lblTitulo.setFont(fontTitulo);
+		Label lblCotacion = new Label ("(Este software se utiliza para Alzheimer leve a moderado)");
+		lblCotacion.setFont(fontTexto);
+		
+		
 		
 		Label logo = new Label();
 		Image img = new Image("LogoTemp.png");
@@ -46,11 +49,11 @@ public class PrincipalScreen {
 		botonLogin.setDefaultButton(true);
 		
 		botonRegistro = new Button();
-		botonRegistro.setText("Registrate aqui");
+		botonRegistro.setText("Regístrate aquí");
 		botonRegistro.setMinWidth(200);
 		botonRegistro.setFont(fontTexto);
 
-		layout.getChildren().addAll(lblTitulo,logo,botonLogin,botonRegistro);
+		layout.getChildren().addAll(lblTitulo,lblCotacion,logo,botonLogin,botonRegistro);
 		layout.setPadding(new Insets(80,0,0,0));
 		BackgroundImage myBI= new BackgroundImage(new Image("background01.png",1800,800,false,true),
 		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

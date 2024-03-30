@@ -29,6 +29,7 @@ public class Main extends Application {
 	private ResultadosScreen resultadoScene;
 	private SopaScreen sopaScene;
 	private PalabrasScreen palabrasScene;
+	private SiluetasScreen siluetasScene;
 	private SucursalesScreen sucursalesScene;
 	private VerResultadosScreen resultadosScene;
 	private AddAdminScreen addAdminScene;
@@ -88,7 +89,8 @@ public class Main extends Application {
 			clienteScene = new ClienteScreen(userId);
 			clienteScene.getBotonCS().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));
 			clienteScene.getBotonLaberinto().setOnAction(e-> changeToLaberintoScreen(primaryStage));
-			clienteScene.getBotonMemoPalabras().setOnAction(e-> changeToPalabrasScreen(primaryStage));
+			//clienteScene.getBotonMemoPalabras().setOnAction(e-> changeToPalabrasScreen(primaryStage));
+			clienteScene.getBotonSiluetas().setOnAction(e-> changeToSiluetasScreen(primaryStage));
 			clienteScene.getBotonSopa().setOnAction(e-> changeToSopaScreen(primaryStage));
 			clienteScene.getBotonColores().setOnAction(e-> changeToColoresScreen(primaryStage));
 			clienteScene.getBotonResultado().setOnAction(e-> changeToResultadoScreen(primaryStage));
@@ -103,7 +105,7 @@ public class Main extends Application {
 		laberintoScene.startGame();
 	}
 	
-	private void changeToPalabrasScreen(Stage primaryStage) {
+	/*private void changeToPalabrasScreen(Stage primaryStage) {
 		palabrasScene = new PalabrasScreen();
 		try {
 			String respuesta = palabrasScene.buscarPalabraBD(userId);
@@ -114,7 +116,7 @@ public class Main extends Application {
 				primaryStage.setScene(palabrasScene.getScene());
 			}
 			else if(respuesta.contains("temprano#")){
-				AlertBox.display("Su test no esta disponible", "Aun no ha pasado un dia desde que inicio el test\nIntente de nuevo mas tarde.");
+				AlertBox.display("Su ejercicio no está disponible", "Aun no ha pasado un dia desde que inicio el ejercicio\nIntente de nuevo más tarde.");
 			}
 			else {
 				palabrasScene.setupScene2(primaryStage,userId,clienteScene,respuesta);
@@ -123,12 +125,17 @@ public class Main extends Application {
 				primaryStage.setScene(palabrasScene.getScene());
 			}
 		} catch (IOException e) {
-			AlertBox.display("Error", "Hubo un error al conectar a la base de datos\nRevise su conexion e intente de nuevo");
+			AlertBox.display("Error", "Hubo un error al conectar a la base de datos\nRevise su conexión e intente de nuevo");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			AlertBox.display("Error", "Conexion interrumpida");
 			e.printStackTrace();
 		}
+	}*/
+	
+	private void changeToSiluetasScreen(Stage primaryStage) {
+		siluetasScene = new SiluetasScreen(userId, primaryStage, clienteScene.getScene());
+		primaryStage.setScene(siluetasScene.getScene());
 	}
 	
 	private void changeToSopaScreen(Stage primaryStage) {
@@ -176,10 +183,10 @@ public class Main extends Application {
 			try {
 				addAdminScene.removeAdmin(primaryStage, principalScene.getScene(),userId);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -201,7 +208,7 @@ public class Main extends Application {
 		if (response.body().contains("unv"))
 			AlertBox.display("Error", "Por favor verifique su cuenta en su correo");
 		else if (response.body().contains("noe"))
-			AlertBox.display("Error", "No se encontro su cuenta\nVerifique sus datos");
+			AlertBox.display("Error", "No se encontró su cuenta\nVerifique sus datos");
 		else if (response.body().contains("adm")) {
 			userId = response.body().substring(3);
 			System.out.println(userId);
@@ -223,7 +230,7 @@ public class Main extends Application {
 		}
 		else {
 			System.out.println(response.body());
-			AlertBox.display("Error", "Hubo un error, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, intente de nuevo más tarde");
 		}
 	}
 	

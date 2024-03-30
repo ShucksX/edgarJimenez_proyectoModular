@@ -81,7 +81,7 @@ public class ResPalabras {
 		botonGrafica.setFont(fontTexto);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a menu de resultados");
+		botonVolver.setText("Volver a menú de resultados");
 		botonVolver.setMinWidth(minwidth);
 		botonVolver.setFont(fontTexto);
 		botonVolver.setOnAction(e-> primaryStage.setScene(returnScene));
@@ -125,10 +125,10 @@ public class ResPalabras {
 			else
 				fillTableId(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -200,10 +200,10 @@ public class ResPalabras {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -427,11 +427,11 @@ public class ResPalabras {
 		try {
 			fillTableId(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo más tarde");
 			e.printStackTrace();
 			return;
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Conexión interrumpida, intente de nuevo más tarde");
 			e.printStackTrace();
 			return;
 		}
@@ -475,7 +475,7 @@ public class ResPalabras {
         String textSLR = "Su desempeño parece ";
         
         if (series.getData().size()<=2) {
-        	textSLR = "Le recomendamos hacer mas tests antes de realizar conclusiones";
+        	textSLR = "Le recomendamos hacer más ejercicios antes de realizar conclusiones";
         }
         else {
 	        if (slr.getBeta1() < 0) {
@@ -489,33 +489,12 @@ public class ResPalabras {
         
         Label sucursal = new Label();
         sucursal.setFont(fontTexto);
-        sucursal.setText("Si considera necesario asistir a un centro de atencion:");
+        sucursal.setText("Si requiere contactar a un centro de atención:");
         
         Label sucursal2 = new Label();
         sucursal2.setFont(fontTexto);
-        sucursal2.setText("Le invitamos a visitar la ventana de sucursales en la seleccion de tests");
+        sucursal2.setText("Le invitamos a visitar la ventana de sucursales en la selección de ejercicios");
         sucursal2.setWrapText(true);
-        
-        Label edadLabel = new Label();
-        edadLabel.setFont(fontTexto);
-        try {
-			int edad = Utilities.calcularEdad(userID);
-			if (edad < 40) {
-				edadLabel.setText("Considere que por su edad, es menos probable que tenga Alzheimer");
-			}
-		} catch (IOException e) {
-			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo mas tarde");
-			e.printStackTrace();
-			return;
-		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida, intente de nuevo mas tarde");
-			e.printStackTrace();
-			return;
-		} catch (ParseException e) {
-			AlertBox.display("Error", "Hubo un error, intente de nuevo mas tarde");
-			e.printStackTrace();
-			return;
-		}
         
         
         Button botonClose = new Button();
@@ -538,7 +517,7 @@ public class ResPalabras {
 		        new Background(backgroundFill);
 		layout.setBackground(background);
 		//layout.setAlignment(Pos.BASELINE_CENTER);
-		layout.getChildren().addAll(label,lineChart, slrLabel,sucursal,sucursal2,edadLabel,botonClose);
+		layout.getChildren().addAll(label,lineChart, slrLabel,sucursal,sucursal2,botonClose);
 		lineChart.getData().add(series);
 		
 		
@@ -559,3 +538,4 @@ public class ResPalabras {
 		return ChronoUnit.DAYS.between(basedate, date)+i*0.1f;
 	}
 }
+

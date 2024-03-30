@@ -69,7 +69,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 		instrucciones2.setFont(fontTexto);
 		Label instrucciones3 = new Label("Presione ENTER para escoger la letra en el cursor");
 		instrucciones3.setFont(fontTexto);
-		Label instrucciones4 = new Label("Retroceso/Delete -> Borrar letra     Escape -> Abandonar test");
+		Label instrucciones4 = new Label("Retroceso/Delete -> Borrar letra     Escape -> Abandonar ejercicio");
 		instrucciones4.setFont(fontTexto);
 		
         boardSize = game.getBoardSize();
@@ -266,7 +266,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     }
     
     public void endGame(Stage gameStage) {
-    	if (ConfirmBox.display("Salir del test", "¿Seguro que desea abandonar el test?")) {
+    	if (ConfirmBox.display("Salir del ejercicio", "¿Seguro que desea abandonar el ejercicio?")) {
 	    	timeline.stop();
 	    	timer.stop();
 	    	gameStage.setScene(endScene);

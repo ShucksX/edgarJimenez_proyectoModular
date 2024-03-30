@@ -66,7 +66,7 @@ public class PalabrasScreen {
 		
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		
-		lblDisclaimer1 = new Label("Memorice estas palabras y regrese dentro de un dia");
+		lblDisclaimer1 = new Label("Memorice estas palabras y regrese dentro de un día");
 		lblDisclaimer1.setFont(fontTexto);
 		lblDisclaimer2 = new Label("Por favor no anote estas palabras, intente recordarlas por su cuenta.");
 		lblDisclaimer2.setWrapText(true);
@@ -74,7 +74,7 @@ public class PalabrasScreen {
 		
 		int minwidth = 300;
 		botonVolver = new Button();
-		botonVolver.setText("Volver a seleccion de test");
+		botonVolver.setText("Volver a seleccion de ejercicios");
 		botonVolver.setMinWidth(minwidth);
 		botonVolver.setFont(fontTexto);
 
@@ -85,7 +85,7 @@ public class PalabrasScreen {
 			try {
 				registrarPalabraBD(primaryStage,userid,clienteScene);
 			} catch (IOException | InterruptedException e1) {
-				AlertBox.display("Error", "Hubo un error al registrar el test\nIntente de nuevo mas tarde");
+				AlertBox.display("Error", "Hubo un error al registrar el ejercicio\nIntente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -104,7 +104,7 @@ public class PalabrasScreen {
 		
 		Font fontTexto = Font.font("Arial",FontWeight.NORMAL,16);
 		
-		instruccion = new Label("Escriba las palabra que se le pidio recordar");
+		instruccion = new Label("Escriba las palabra que se le pidió recordar");
 		instruccion.setFont(fontTexto);
 
 
@@ -133,7 +133,7 @@ public class PalabrasScreen {
 		fieldPalabra3.setFont(fontTexto);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a seleccion de test");
+		botonVolver.setText("Volver a selección de ejercicios");
 		botonVolver.setMinWidth(250);
 		botonVolver.setFont(fontTexto);
 
@@ -144,10 +144,10 @@ public class PalabrasScreen {
 			try {
 				evaluarRespuesta(primaryStage,userid,clienteScene);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -180,7 +180,7 @@ public class PalabrasScreen {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		//System.out.println(response.body());
 		if (response.body().contains("Exito#")) {
-			AlertBox.display("Exito", "Se registro su resultado en la base de datos");
+			AlertBox.display("Exito", "Se registró su resultado en la base de datos");
 			primaryStage.setScene(clienteScene.getScene());
 		}
 		else {
@@ -205,7 +205,7 @@ public class PalabrasScreen {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("Exito")) {
-			AlertBox.display("Registro exitoso", "Su test se registro con exito\nPodra responder en 1 dia");
+			AlertBox.display("Registro exitoso", "Su ejercicio se registró con éxito\nPodrá responder en 1 día");
 			primaryStage.setScene(clienteScene.getScene());
 		}
 		else {

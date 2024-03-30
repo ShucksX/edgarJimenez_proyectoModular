@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Laberinto {
 	private boolean[][] mazeBoard;
-	private int boardSize = 30;
-	private int entryCol = 15;
+	private int boardSize = 20;
+	private int entryCol = 10;
 	private int entryRow = boardSize-1;
-	private int exitCol = 15;
+	private int exitCol = 10;
 	private int exitRow = 0;
 	private int cursorCol;
 	private int cursorRow;

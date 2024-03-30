@@ -52,7 +52,7 @@ public class SucursalesScreen {
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,15);
 		
-		Label lblTitulo = new Label ("Centros de atencion");
+		Label lblTitulo = new Label ("Centros de atención");
 		lblTitulo.setFont(fontTitulo);
 		
 		VBox right = new VBox();
@@ -61,7 +61,7 @@ public class SucursalesScreen {
 		right.setAlignment(Pos.BASELINE_CENTER);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a menu de resultados");
+		botonVolver.setText("Volver a menú de resultados");
 		botonVolver.setMinWidth(300);
 		botonVolver.setFont(fontTexto);
 		botonVolver.setOnAction(e-> primaryStage.setScene(returnScene));
@@ -78,9 +78,9 @@ public class SucursalesScreen {
 		municipio.setCellValueFactory(cellData -> cellData.getValue().municipioProperty());
 		TableColumn<Sucursal, String> localidad = new TableColumn <> ("Localidad");
 		localidad.setCellValueFactory(cellData -> cellData.getValue().localidadProperty());
-		TableColumn<Sucursal, String> direccion = new TableColumn <> ("Direccion");
+		TableColumn<Sucursal, String> direccion = new TableColumn <> ("Dirección");
 		direccion.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
-		TableColumn<Sucursal, String> numtel = new TableColumn <> ("Numero de telefono");
+		TableColumn<Sucursal, String> numtel = new TableColumn <> ("Numero de teléfono");
 		numtel.setCellValueFactory(cellData -> cellData.getValue().numTelProperty());
 		TableColumn<Sucursal, String> correo = new TableColumn <> ("Correo");
 		correo.setCellValueFactory(cellData -> cellData.getValue().correoProperty());
@@ -97,10 +97,10 @@ public class SucursalesScreen {
 		try {
 			fillTable(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -137,16 +137,16 @@ public class SucursalesScreen {
 		fieldLocalidad.setPromptText("Localidad");
 		fieldLocalidad.setPadding(inset);
 		fieldLocalidad.setFont(fontTexto);
-		Label txtDireccion= new Label ("Direccion:");
+		Label txtDireccion= new Label ("Dirección:");
 		txtDireccion.setFont(fontTexto);
 		fieldDireccion = new TextField();
-		fieldDireccion.setPromptText("Direccion");
+		fieldDireccion.setPromptText("Dirección");
 		fieldDireccion.setPadding(inset);
 		fieldDireccion.setFont(fontTexto);
-		Label txtNumTel= new Label ("Numero de telefono:");
+		Label txtNumTel= new Label ("Numero de teléfono:");
 		txtNumTel.setFont(fontTexto);
 		fieldNumTel = new TextField();
-		fieldNumTel.setPromptText("Numero de telefono");
+		fieldNumTel.setPromptText("Numero de teléfono");
 		fieldNumTel.setPadding(inset);
 		fieldNumTel.setFont(fontTexto);
 		Label txtCorreo= new Label ("Correo:");
@@ -165,10 +165,10 @@ public class SucursalesScreen {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -181,10 +181,10 @@ public class SucursalesScreen {
 			try {
 				buscarArea(table,userID);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -283,13 +283,13 @@ public class SucursalesScreen {
 		HttpRequest request = HttpRequest.newBuilder(URI.create(url)).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		if(response.body().contains("noe#")) {
-			AlertBox.display("Hubo un error al obtener tu ubicacion", "No se pudo obtener tu ubicacion para la busqueda, intenta de nuevo mas tarde.");
+			AlertBox.display("Hubo un error al obtener tu ubicación", "No se pudo obtener tu ubicación para la búsqueda, intenta de nuevo más tarde.");
 		}
 		else if(response.body().contains("noec#")) {
-			AlertBox.display("Error", "No se logro encontrar centros cerca de tu ubicacion, verifica tus datos de ubicacion en tu configuracion de usuario.");
+			AlertBox.display("Error", "No se logró encontrar centros cerca de tu ubicación, verifica tus datos de ubicación en tu configuración de usuario.");
 		}
 		else {
-			AlertBox.display("Exito", "Se encontraron centros de atencion cercanos a tu ubicacion.");
+			AlertBox.display("Éxito", "Se encontraron centros de atención cercanos a tu ubicación.");
 			setupTable(table,response.body());
 		}
 	}
@@ -392,3 +392,4 @@ public class SucursalesScreen {
 		}
 	}
 }
+

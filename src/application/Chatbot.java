@@ -105,10 +105,10 @@ public class Chatbot {
  
         } catch (FileNotFoundException e){
             e.printStackTrace();
-            return "Hubo un error, intente de nuevo mas tarde";
+            return "Hubo un error, intente de nuevo más tarde";
         } catch (IOException e) {
             e.printStackTrace();
-            return "Hubo un error, intente de nuevo mas tarde";
+            return "Hubo un error, intente de nuevo más tarde";
         }
     }
 	
@@ -148,10 +148,10 @@ public class Chatbot {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return "Hubo un error, intente de nuevo mas tarde";
+            return "Hubo un error, intente de nuevo más tarde";
         } catch (IOException e) {
             e.printStackTrace();
-            return "Hubo un error, intente de nuevo mas tarde";
+            return "Hubo un error, intente de nuevo más tarde";
         }
     }
 	
@@ -164,7 +164,7 @@ public class Chatbot {
 			return response;
 		}
 		else if(findInArray(1,input,false)) {
-			response = "No puedo asegurarte si tienes esta condicion, pero te recomendamos hacer los tests en esta aplicacion para observar como se comporta tu memoria y concentracion. Si considera que estos aspectos empeoran, puede comunicarse con un centro de atencion en la ventana de Centros de Atencion para recibir consulta y ayuda profesional ";
+			response = "No puedo asegurarte si tienes esta condición, pero te recomendamos hacer los ejercicios en esta aplicación para observar cómo se comporta tu memoria y concentración. Si considera que estos aspectos empeoran, puede comunicarse con un centro de atención en la ventana de Centros de Atención para recibir consulta y ayuda profesional ";
 			return response;
 		}
 		else if(findInArray(2,input,false)) {
@@ -172,27 +172,27 @@ public class Chatbot {
 			return response;
 		}
 		else if (findInArray(3,input,false)){
-			response = "Pare ver tus resultados solo cierra esta ventana y presiona el boton correspondiente a la prueba de la quieres ver los resultados, en la ventana de resultados. Aqui veras los resultados y puedes observar una grafica de los mismos. ";
+			response = "Pare ver tus resultados solo cierra esta ventana y presiona el botón correspondiente al ejercicio de la quieres ver los resultados, en la ventana de resultados. Aquí veras los resultados y puedes observar una gráfica de los mismos. ";
 			return response;
 		}
 		else if (findInArray(4,input,false)) {
-			response = "Estas pruebas sirven para comprobar y practicar tu memoria y atencion, para que con los resultados puedas deducir si requieres apoyo o no,";
+			response = "Estos ejercicios sirven para comprobar y practicar tu memoria y atención, para que con los resultados puedas deducir si requieres apoyo o no,";
 			return response;
 		}
 		else if(findInArray(5,input,false)) {
-			response = "La grafica es una representacion visual de tu desempeño en las pruebas, puedes acceder a ellos presionando el boton de Ver Grafica en la ventana de resultado de una prueba en especifico. En esta ventana veras una grafica de tu desempeño mediante el paso del tiempo al igual que un texto que explica si tu desempeño empeora, mejora o seria mejor hacer mas pruebas primero. Esto no confirma si tienes Alzheimer o no asi, que se recomienda buscar un centro de atencion si buscas confirmacion en ello. ";
+			response = "La grafica es una representación visual de tu desempeño en los ejercicios, puedes acceder a ellos presionando el botón de Ver Grafica en la ventana de resultado de un ejercicio en específico. En esta ventana veras una gráfica de tu desempeño mediante el paso del tiempo al igual que un texto que explica si tu desempeño empeora, mejora o sería mejor hacer más ejercicios primero. Esto no confirma si tienes Alzheimer o no así, que se recomienda buscar un centro de atención si buscas confirmación en ello. ";
 			return response;
 		}
 		else if(findInArray(6,input,false)) {
-			response = "En esta aplicacion puedes intentar 4 pruebas distintas. La primera es un laberinto, en donde deberas mover tu punto hacia la salida usando las flechas de direcciones, deberas hacerlo 5 veces y se medira el tiempo tardado. La siguiente prueba es la sopa de letras, es una sopa de letras tradicional en donde deberas encontrar palabras escondidas entra varias letras aleatorias y se medira el tiempo que tardes en hacerlo. La siguiente pruebe es la memorizacion de palabras, en donde deberas recordar 3 palabras en un orden, esperar un dia y decir las palabras que se te pidio recordar. Finalmente, la ultima prueba son los colores intermitentes, en donde deberas prestar atencion al color y figura que se te muestra y rapidamente localizar en que posicion aparece despues de un tiempo. ";
+			response = "En esta aplicación puedes intentar 4 ejercicios distintos. El primero es un laberinto, en donde deberás mover tu punto hacia la salida usando las flechas de direcciones, deberás hacerlo 5 veces y se medirá el tiempo tardado. El siguiente ejercicio es la sopa de letras, es una sopa de letras tradicional en donde deberás encontrar palabras escondidas entra varias letras aleatorias y se medirá el tiempo que tardes en hacerlo. La siguiente pruebe es la memorización de palabras, en donde deberás recordar 3 palabras en un orden, esperar un día y decir las palabras que se te pidió recordar. Finalmente, el último ejercicio son los colores intermitentes, en donde deberás prestar atención al color y figura que se te muestra y rápidamente localizar en que posición aparece después de un tiempo. ";
 			return response;
 		}
 		else if(findInArray(7,input,false)) {
-			response = "Soy un chatbot que fue creado por Edgar Jimenez Aceves durante su estancia en el Centro Universitario de Ciencias Exactas e Ingenierias. ";
+			response = "Soy un chatbot que fue creado por Edgar Jimenez Aceves durante su estancia en el Centro Universitario de Ciencias Exactas e Ingenierías. ";
 			return response;
 		}
 		else if(findInArray(8,input,false)) {
-			response = "No tengo ningun nombre pero espero poder ayudarte con cualquier duda que tenga de igual manera! ";
+			response = "¡No tengo ningún nombre, pero espero poder ayudarte con cualquier duda que tenga de igual manera! ";
 			return response;
 		}
 		else {
@@ -200,6 +200,7 @@ public class Chatbot {
 			return response;
 		}
 	}
+
 	
 	private boolean findInArray(int index1, String input, boolean strict) {
 		for (int i = 0; i < inputs.get(index1).size();i++) {
@@ -245,22 +246,22 @@ public class Chatbot {
 		inputs.add(new ArrayList<String>());
 		inputs.get(3).add("donde poder ver mi resultado");
 		inputs.get(3).add("donde resultar");
-		inputs.get(3).add("donde prueba");
+		inputs.get(3).add("donde ejercicio");
 		inputs.get(3).add("donde estar mi resultado");
 		inputs.get(3).add("donde estan mi resultado");
-		inputs.get(3).add("donde estan mi prueba");
-		inputs.get(3).add("donde estar mi prueba");
-		inputs.get(3).add("ya hacer mi prueba");
+		inputs.get(3).add("donde estan mi ejercicio");
+		inputs.get(3).add("donde estar mi ejercicio");
+		inputs.get(3).add("ya hacer mi ejercicio");
 		inputs.get(3).add("donde poder ver mi resultado");
 		//Pregunta 3
 		inputs.add(new ArrayList<String>());
-		inputs.get(4).add("de que servir este prueba");
+		inputs.get(4).add("de que servir este ejercicio");
 		inputs.get(4).add("de que servir este tests");
 		inputs.get(4).add("para que servir el tests");
-		inputs.get(4).add("para que servir el prueba");
+		inputs.get(4).add("para que servir el ejercicio");
 		inputs.get(4).add("de que servir el tests");
-		inputs.get(4).add("de que servir el prueba");
-		inputs.get(4).add("este prueba parecer inutil");
+		inputs.get(4).add("de que servir el ejercicio");
+		inputs.get(4).add("este ejercicio parecer inutil");
 		//Pregunta 4
 		inputs.add(new ArrayList<String>());
 		inputs.get(5).add("no entender el grafica");
@@ -273,7 +274,7 @@ public class Chatbot {
 		inputs.get(5).add("yo poder explicar el tablita");
 		//Pregunta 5
 		inputs.add(new ArrayList<String>());
-		inputs.get(6).add("como funcionanar el prueba");
+		inputs.get(6).add("como funcionar el ejercicio");
 		inputs.get(6).add("como funcionar el tests");
 		//Pregunta 6
 		inputs.add(new ArrayList<String>());

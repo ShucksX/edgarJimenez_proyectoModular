@@ -63,7 +63,7 @@ public class AddAdminScreen {
 		right.setAlignment(Pos.BASELINE_CENTER);
 		
 		botonVolver = new Button();
-		botonVolver.setText("Volver a menu de administrador");
+		botonVolver.setText("Volver a menú de administrador");
 		botonVolver.setMinWidth(220);
 		botonVolver.setFont(fontTexto);
 		
@@ -74,7 +74,7 @@ public class AddAdminScreen {
 		
 		
 		botonRemAdmin = new Button();
-		botonRemAdmin.setText("Remover administrador de mi cuenta");
+		botonRemAdmin.setText("Remover mi rol de administrador");
 		botonRemAdmin.setMinWidth(220);
 		botonRemAdmin.setFont(fontTexto);
 		
@@ -88,7 +88,7 @@ public class AddAdminScreen {
 		fechanac.setCellValueFactory(cellData -> cellData.getValue().fechaNacProperty());
 		TableColumn<Usuario, String> correo = new TableColumn <> ("Correo");
 		correo.setCellValueFactory(cellData -> cellData.getValue().correoProperty());
-		TableColumn<Usuario, String> pais = new TableColumn <> ("Pais");
+		TableColumn<Usuario, String> pais = new TableColumn <> ("País");
 		pais.setCellValueFactory(cellData -> cellData.getValue().paisProperty());
 		TableColumn<Usuario, String> municipio = new TableColumn <> ("Municipio");
 		municipio.setCellValueFactory(cellData -> cellData.getValue().municipioProperty());
@@ -100,10 +100,10 @@ public class AddAdminScreen {
 		try {
 			fillTable(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexion al servidor se interrumpio");
+			AlertBox.display("Error", "La conexión al servidor se interrumpió");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -113,20 +113,20 @@ public class AddAdminScreen {
 			try {
 				addAdmin(table.getSelectionModel().getSelectedItem());
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
 		
 		Insets inset = new Insets(0,0,0,10);
-		Label txtId = new Label ("ID:");
+		Label txtId = new Label ("ID :");
 		fieldId = new TextField();
 		fieldId.setPromptText("ID");
 		fieldId.setPadding(inset);
-		Label txtnombre = new Label ("Nombre:");
+		Label txtnombre = new Label ("Nombre :");
 		fieldNombre = new TextField();
 		fieldNombre.setPromptText("Nombre");
 		fieldNombre.setPadding(inset);
@@ -162,10 +162,10 @@ public class AddAdminScreen {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error", "La conexión al servidor se interrumpió");
 				e1.printStackTrace();
 			}
 		});
@@ -239,11 +239,11 @@ public class AddAdminScreen {
 				String respuesta = response.body();
 				if (respuesta.contains("Exito#"))
 				{
-					AlertBox.display("Exito", "Se removio el rol de administrador de su cuenta");
+					AlertBox.display("Exito", "Se removió el rol de administrador de su cuenta");
 					stage.setScene(mainScreen);
 				}
 				else if (respuesta.contains("Nop#")) {
-					AlertBox.display("Error", "Usted es el unico administrador restante\nPor favor promueva un nuevo usuario antes de proceder");
+					AlertBox.display("Error", "Usted es el único administrador restante\nPor favor promueva un nuevo usuario antes de proceder");
 				}
 				else {
 					AlertBox.display("Error", "Hubo un error al remover su rol de administrador");

@@ -74,7 +74,7 @@ public class UserConfigScreen {
 		Stage window = new Stage();
 		
 		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle("Configuracion de usuario");
+		window.setTitle("Configuración de usuario");
 		window.setMinWidth(350);
 		window.setResizable(false);
 		
@@ -82,7 +82,7 @@ public class UserConfigScreen {
 		Font fontSubtitulo = Font.font("Courier New",FontWeight.BOLD,17);
 		Font fontTexto = Font.font("Arial",FontWeight.NORMAL,16);
 		Label label = new Label();
-		label.setText("Configuracion de usuario");
+		label.setText("Configuración de usuario");
 		label.setFont(fontTitulo);
 		
 		Label nombreSub = new Label();
@@ -107,7 +107,7 @@ public class UserConfigScreen {
 		fechaNac.setFont(fontTexto);
 		
 		Label ubicacion = new Label();
-		ubicacion.setText("Informacion de ubicacion:");
+		ubicacion.setText("Información de ubicación:");
 		ubicacion.setFont(fontSubtitulo);
 		
 		Label pais = new Label();
@@ -135,7 +135,7 @@ public class UserConfigScreen {
 		Button fechaNacButton = new Button("Cambiar fecha de nacimiento");
 		fechaNacButton.setFont(fontTexto);
 		fechaNacButton.setStyle(style);
-		Button ubicacionButton = new Button("Cambiar datos de ubicacion");
+		Button ubicacionButton = new Button("Cambiar datos de ubicación");
 		ubicacionButton.setFont(fontTexto);
 		ubicacionButton.setStyle(style);
 		Button cancelButton = new Button("Cerrar ventana");
@@ -235,10 +235,10 @@ public class UserConfigScreen {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo más tarde");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Se interrumpio la conexion, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Se interrumpió la conexión, intente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -269,7 +269,7 @@ public class UserConfigScreen {
 	
 	private static boolean registrarNombreBD(Usuario user, String newNombre, String contrasena) throws IOException, InterruptedException {
 		if (newNombre.equals("") || contrasena.equals("")) {
-			AlertBox.display("Error", "Por favor asegurese de llenar todos los campos");
+			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
 			return false;
 		}
 		HttpClient client = HttpClient.newHttpClient();
@@ -280,15 +280,15 @@ public class UserConfigScreen {
 		response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("Exito#")) {
-			AlertBox.display("Exito", "Se cambio el nombre con exito");
+			AlertBox.display("Exito", "Se cambió el nombre con éxito");
 			return true;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else {
-			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo más tarde");
 			return false;
 		}
 	}
@@ -344,13 +344,13 @@ public class UserConfigScreen {
 					}
 				}
 				else {
-					AlertBox.display("Error", "Su nueva contraseña no concuerda en ambos campos, verifiquelas por favor");
+					AlertBox.display("Error", "Su nueva contraseña no concuerda en ambos campos, verifíquelas por favor");
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo más tarde");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Se interrumpio la conexion, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Se interrumpió la conexión, intente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -381,11 +381,11 @@ public class UserConfigScreen {
 	
 	private static boolean registrarContrasenaBD(Usuario user, String contrasena, String newContrasena) throws IOException, InterruptedException {
 		if (newContrasena.equals("") || contrasena.equals("")) {
-			AlertBox.display("Error", "Por favor asegurese de llenar todos los campos");
+			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
 			return false;
 		}
 		if (newContrasena.contains(" ") || contrasena.contains(" ")) {
-			AlertBox.display("Error", "Su contraseñá no puede contener espacios");
+			AlertBox.display("Error", "Su contraseña no puede contener espacios");
 			return false;
 		}
 		HttpClient client = HttpClient.newHttpClient();
@@ -396,15 +396,15 @@ public class UserConfigScreen {
 		response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("Exito#")) {
-			AlertBox.display("Exito", "Se cambio la contraseña con exito");
+			AlertBox.display("Exito", "Se cambió la contraseña con éxito");
 			return true;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else {
-			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo más tarde");
 			return false;
 		}
 	}
@@ -451,10 +451,10 @@ public class UserConfigScreen {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo más tarde");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Se interrumpio la conexion, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Se interrumpió la conexión, intente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -485,7 +485,7 @@ public class UserConfigScreen {
 	
 	private static boolean registrarCorreoBD(Usuario user, String newCorreo, String contrasena) throws IOException, InterruptedException {
 		if (newCorreo.equals("") || contrasena.equals("")) {
-			AlertBox.display("Error", "Por favor asegurese de llenar todos los campos");
+			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
 			return false;
 		}
 		HttpClient client = HttpClient.newHttpClient();
@@ -500,11 +500,11 @@ public class UserConfigScreen {
 			return true;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else {
-			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo más tarde");
 			return false;
 		}
 	}
@@ -551,10 +551,10 @@ public class UserConfigScreen {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo más tarde");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Se interrumpio la conexion, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Se interrumpió la conexión, intente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -585,7 +585,7 @@ public class UserConfigScreen {
 	
 	private static boolean registrarFechaNacBD(Usuario user, LocalDate newFechaNac, String contrasena) throws IOException, InterruptedException {
 		if (newFechaNac == null || contrasena.equals("")) {
-			AlertBox.display("Error", "Por favor asegurese de llenar todos los campos");
+			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
 			return false;
 		}
 		HttpClient client = HttpClient.newHttpClient();
@@ -596,15 +596,15 @@ public class UserConfigScreen {
 		response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("Exito#")) {
-			AlertBox.display("Exito", "Se cambio la fecha de nacimiento con exito");
+			AlertBox.display("Exito", "Se cambió la fecha de nacimiento con éxito");
 			return true;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else {
-			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo más tarde");
 			return false;
 		}
 	}
@@ -613,25 +613,25 @@ public class UserConfigScreen {
 		Stage window = new Stage();
 		
 		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle("Cambiar datos de ubicacion");
+		window.setTitle("Cambiar datos de ubicación");
 		window.setMinWidth(350);
 		window.setResizable(false);
 		
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		Label label = new Label();
-		label.setText("Cambiar datos de ubicacion");
+		label.setText("Cambiar datos de ubicación");
 		label.setFont(fontTitulo);
 		
 		Label instrucciones = new Label();
-		instrucciones.setText("Deje vacios los datos que no cambian");
+		instrucciones.setText("Deje vacíos los datos que no cambian");
 		instrucciones.setFont(fontTexto);
 		
 		Label nuevoPais = new Label();
-		nuevoPais.setText("Escriba su nuevo pais: ");
+		nuevoPais.setText("Escriba su nuevo país: ");
 		nuevoPais.setFont(fontTexto);
 		TextField fieldPais = new TextField();
-		fieldPais.setPromptText("Pais");
+		fieldPais.setPromptText("País");
 		fieldPais.setFont(fontTexto);
 		
 		Label nuevoMunicipio = new Label();
@@ -669,10 +669,10 @@ public class UserConfigScreen {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Error al conectar con el servidor, intente de nuevo más tarde");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Se interrumpio la conexion, intente de nuevo mas tarde");
+				AlertBox.display("Error", "Se interrumpió la conexión, intente de nuevo más tarde");
 				e1.printStackTrace();
 			}
 		});
@@ -704,7 +704,7 @@ public class UserConfigScreen {
 	
 	private static boolean registrarUbicacionBD(Usuario user, String pais, String municipio, String localidad, String contrasena) throws IOException, InterruptedException {
 		if ((pais.equals("") && municipio.equals("") && localidad.equals("")) || contrasena.equals("")) {
-			AlertBox.display("Error", "Por favor asegurese de llenar al menos un dato a cambiar e ingresar su contraseña");
+			AlertBox.display("Error", "Por favor asegúrese de llenar al menos un dato a cambiar e ingresar su contraseña");
 			return false;
 		}
 		HttpClient client = HttpClient.newHttpClient();
@@ -725,19 +725,19 @@ public class UserConfigScreen {
 		response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("Exito#")) {
-			AlertBox.display("Exito", "Se cambio los datos de ubicacion con exito");
+			AlertBox.display("Exito", "Se cambió los datos de ubicación con éxito");
 			return true;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else if (response.body().contains("noe#")) {
-			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error, verifique que su contraseña esta correcta\nO intente de nuevo más tarde");
 			return false;
 		}
 		else {
-			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo mas tarde");
+			AlertBox.display("Error", "Hubo un error al modificar sus datos, intente de nuevo más tarde");
 			return false;
 		}
 	}
