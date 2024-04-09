@@ -28,6 +28,7 @@ public class LoginScreen  {
 	private Button botonLogin;
 	private Button botonRegistro;
 	private Button botonRegresar;
+	private Button botonNC;
 	public LoginScreen() {
 		VBox layout = new VBox();
 		layout.setSpacing(8);
@@ -68,7 +69,12 @@ public class LoginScreen  {
 		botonRegresar.setMinWidth(minwidth);
 		botonRegresar.setFont(fontTexto);
 		
-		layout.getChildren().addAll(lblLogin,usuario,contrasena,botonLogin,botonRegistro, botonRegresar);
+		botonNC = new Button();
+		botonNC.setText("Entrar sin conexión");
+		botonNC.setMinWidth(minwidth);
+		botonNC.setFont(fontTexto);
+		
+		layout.getChildren().addAll(lblLogin,usuario,contrasena,botonLogin,botonRegistro,botonNC, botonRegresar);
 		BackgroundImage myBI= new BackgroundImage(new Image("background01.png",1800,800,false,true),
 		        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 		          BackgroundSize.DEFAULT);
@@ -92,6 +98,9 @@ public class LoginScreen  {
 	
 	public Button getBotonRegresar() {
 		return botonRegresar;
+	}
+	public Button getBotonNC() {
+		return botonNC;
 	}
 	public TextField getUsuario() {
 		return usuario;

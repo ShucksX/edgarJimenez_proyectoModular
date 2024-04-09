@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 public class ClienteScreen {
 	private Scene clienteScene;
 	private Button botonCS,botonLaberinto,/*botonMemoPalabras,*/botonSiluetas,botonSopa,botonColores, botonResultado,botonChat, botonSucursales;
-	public ClienteScreen(String userId) {
+	public ClienteScreen(String userId, boolean modoNC) {
 		BorderPane layout = new BorderPane();
 		
 		VBox center = new VBox();
@@ -98,7 +98,14 @@ public class ClienteScreen {
 		view.setFitHeight(35);
 		view.setPreserveRatio(true);
 		botonConfig.setGraphic(view);
-		botonConfig.setOnAction(e-> openConfig(userId));
+		botonConfig.setOnAction(e-> {
+			if(modoNC) {
+				AlertBox.display("Alerta", "La configuración de usuario no está disponible en modo sin conexión");
+			}
+			else {
+				openConfig(userId);
+			}
+			});
 		
 		right.getChildren().add(botonConfig);
 		right.getStylesheets().add(getClass().getResource("buttonConf.css").toExternalForm());

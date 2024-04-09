@@ -28,7 +28,7 @@ public class Main extends Application {
 	private ColoresScreen coloresScene;
 	private ResultadosScreen resultadoScene;
 	private SopaScreen sopaScene;
-	private PalabrasScreen palabrasScene;
+	//private PalabrasScreen palabrasScene;
 	private SiluetasScreen siluetasScene;
 	private SucursalesScreen sucursalesScene;
 	private VerResultadosScreen resultadosScene;
@@ -60,6 +60,10 @@ public class Main extends Application {
 			});
 			loginScene.getBotonRegistro().setOnAction(e-> primaryStage.setScene(registroScene.getScene()));
 			loginScene.getBotonRegresar().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));
+			loginScene.getBotonNC().setOnAction(e-> {
+				this.userId = "-1";
+				changeToClienteScreen(primaryStage,true);
+			});
 			
 			registroScene.getBotonLogin().setOnAction(e-> primaryStage.setScene(loginScene.getScene()));
 			registroScene.getBotonRegresar().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));			
@@ -84,23 +88,37 @@ public class Main extends Application {
 		primaryStage.setScene(adminScene.getScene());
 	}
 	
-	private void changeToClienteScreen(Stage primaryStage) {
+	private void changeToClienteScreen(Stage primaryStage, boolean modoNC) {
 		if(clienteScene == null) {
-			clienteScene = new ClienteScreen(userId);
+			clienteScene = new ClienteScreen(userId,modoNC);
 			clienteScene.getBotonCS().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));
-			clienteScene.getBotonLaberinto().setOnAction(e-> changeToLaberintoScreen(primaryStage));
+			clienteScene.getBotonLaberinto().setOnAction(e-> changeToLaberintoScreen(primaryStage,modoNC));
 			//clienteScene.getBotonMemoPalabras().setOnAction(e-> changeToPalabrasScreen(primaryStage));
-			clienteScene.getBotonSiluetas().setOnAction(e-> changeToSiluetasScreen(primaryStage));
-			clienteScene.getBotonSopa().setOnAction(e-> changeToSopaScreen(primaryStage));
-			clienteScene.getBotonColores().setOnAction(e-> changeToColoresScreen(primaryStage));
-			clienteScene.getBotonResultado().setOnAction(e-> changeToResultadoScreen(primaryStage));
-			clienteScene.getBotonSucursales().setOnAction(e-> changeToSucursalesCLScreen(primaryStage));
+			clienteScene.getBotonSiluetas().setOnAction(e-> changeToSiluetasScreen(primaryStage,modoNC));
+			clienteScene.getBotonSopa().setOnAction(e-> changeToSopaScreen(primaryStage,modoNC));
+			clienteScene.getBotonColores().setOnAction(e-> changeToColoresScreen(primaryStage,modoNC));
+			clienteScene.getBotonResultado().setOnAction(e-> {
+				if(modoNC) {
+					AlertBox.display("Alerta", "Los resultados no están disponibles en el modo sin conexión");
+				}
+				else {
+					changeToResultadoScreen(primaryStage);
+				}
+			});
+			clienteScene.getBotonSucursales().setOnAction(e-> {
+				if(modoNC) {
+					AlertBox.display("Alerta", "La consulta de sucursales no está disponible en el modo sin conexión");
+				}
+				else {
+					changeToSucursalesCLScreen(primaryStage);
+				}
+			});
 		}
 		primaryStage.setScene(clienteScene.getScene());
 	}
 	
-	private void changeToLaberintoScreen(Stage primaryStage) {
-		laberintoScene = new LaberintoScreen(primaryStage, clienteScene.getScene(),userId);
+	private void changeToLaberintoScreen(Stage primaryStage, boolean modoNC) {
+		laberintoScene = new LaberintoScreen(primaryStage, clienteScene.getScene(),userId, modoNC);
 		primaryStage.setScene(laberintoScene.getScene());
 		laberintoScene.startGame();
 	}
@@ -133,19 +151,19 @@ public class Main extends Application {
 		}
 	}*/
 	
-	private void changeToSiluetasScreen(Stage primaryStage) {
-		siluetasScene = new SiluetasScreen(userId, primaryStage, clienteScene.getScene());
+	private void changeToSiluetasScreen(Stage primaryStage, boolean modoNC) {
+		siluetasScene = new SiluetasScreen(userId, primaryStage, clienteScene.getScene(), modoNC);
 		primaryStage.setScene(siluetasScene.getScene());
 	}
 	
-	private void changeToSopaScreen(Stage primaryStage) {
-		sopaScene = new SopaScreen(primaryStage, clienteScene.getScene(),userId);
+	private void changeToSopaScreen(Stage primaryStage, boolean modoNC) {
+		sopaScene = new SopaScreen(primaryStage, clienteScene.getScene(),userId, modoNC);
 		primaryStage.setScene(sopaScene.getScene());
 		sopaScene.startGame();
 	}
 	
-	private void changeToColoresScreen(Stage primaryStage) {
-		coloresScene = new ColoresScreen(userId);
+	private void changeToColoresScreen(Stage primaryStage, boolean modoNC) {
+		coloresScene = new ColoresScreen(userId, modoNC);
 		coloresScene.getBotonVolver().setOnAction(e-> primaryStage.setScene(clienteScene.getScene()));
 		coloresScene.getBotonIniciar().setOnAction(e-> coloresScene.comenzarTest(primaryStage,clienteScene));
 		coloresScene.finishScene();
@@ -217,7 +235,7 @@ public class Main extends Application {
 				changeToAdminScreen(primaryStage);
 			}
 			else {
-				changeToClienteScreen(primaryStage);
+				changeToClienteScreen(primaryStage,false);
 			}
 		}
 		else if (response.body().contains("vac"))
@@ -226,7 +244,7 @@ public class Main extends Application {
 		else if (response.body().contains("cli")) {
 			userId = response.body().substring(3);
 			System.out.println(userId);
-			changeToClienteScreen(primaryStage);
+			changeToClienteScreen(primaryStage,false);
 		}
 		else {
 			System.out.println(response.body());

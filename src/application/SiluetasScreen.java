@@ -38,7 +38,9 @@ public class SiluetasScreen {
 	private String userID;
 	private Button botonVolver, botonIniciar;
 	private ArrayList<Silueta> siluList = new ArrayList<Silueta>();
-	public SiluetasScreen(String userId, Stage primaryStage, Scene returnScene) {
+	private boolean modoNC;
+	public SiluetasScreen(String userId, Stage primaryStage, Scene returnScene, boolean modoNC) {
+		this.modoNC = modoNC;
 		llenarSiluetas();
 		userID = userId;
 		BorderPane layout = new BorderPane();
@@ -272,6 +274,8 @@ public class SiluetasScreen {
 	}
 	
 	public void registrarResultadoBD(int puntuacion, int errCount) throws IOException, InterruptedException {
+		if (modoNC)
+			return;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		HttpClient client = HttpClient.newHttpClient();

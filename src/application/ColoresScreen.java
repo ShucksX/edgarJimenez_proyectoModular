@@ -36,7 +36,9 @@ public class ColoresScreen {
 	private Button botonVolver,botonIniciar;
 	private int colorCorrecto,botonCorrecto,puntuacion,contador;
 	private String userID;
-	public ColoresScreen(String userid) {
+	private boolean modoNC;
+	public ColoresScreen(String userid, boolean modoNC) {
+		this.modoNC = modoNC;
 		userID = userid;
 		puntuacion = 0;
 		contador= 0;
@@ -352,6 +354,8 @@ public class ColoresScreen {
 	}
 	
 	public void registrarResultadoBD(int errCount) throws IOException, InterruptedException {
+		if(modoNC)
+			return;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		HttpClient client = HttpClient.newHttpClient();

@@ -49,7 +49,9 @@ public class SopaScreen implements EventHandler<KeyEvent> {
     private Sopa game;
     private Stage gameStage;
     private String userID;
-	public SopaScreen(Stage stage, Scene clienteScene, String userid) {
+    private boolean modoNC;
+	public SopaScreen(Stage stage, Scene clienteScene, String userid, boolean modoNC) {
+		this.modoNC = modoNC;
 		userID = userid;
 		game = new Sopa();
 		gameStage = stage;
@@ -107,6 +109,8 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 	}
 	
 	public void registrarResultadoBD(int errCount) throws IOException, InterruptedException {
+		if (modoNC)
+			return;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		HttpClient client = HttpClient.newHttpClient();

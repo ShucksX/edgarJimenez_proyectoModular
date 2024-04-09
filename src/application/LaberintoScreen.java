@@ -54,7 +54,9 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
     
 	private Scene laberintoScene,endScene;
 	private Stage gameStage;
-	public LaberintoScreen(Stage stage, Scene clienteScene, String userId) {
+	private boolean modoNC;
+	public LaberintoScreen(Stage stage, Scene clienteScene, String userId, boolean modoNC) {
+		this.modoNC = modoNC;
 		userID  = userId;
 		maze = new Laberinto();
 		maze.initLaberinto();
@@ -261,6 +263,8 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 	}
 	
 	public void registrarResultadoBD(int errCount) throws IOException, InterruptedException {
+		if(modoNC)
+			return;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		HttpClient client = HttpClient.newHttpClient();
