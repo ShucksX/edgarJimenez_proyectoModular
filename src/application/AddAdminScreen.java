@@ -35,7 +35,7 @@ public class AddAdminScreen {
 	private TextField fieldId, fieldNombre, fieldCorreo, fieldPais, fieldMunicipio, fieldLocalidad, fieldEstado;
 	private DatePicker fieldFechaNac;
 	@SuppressWarnings("unchecked")
-	public AddAdminScreen() {
+	public AddAdminScreen(Stage primaryStage, Scene returnScene) {
 		
 		BorderPane layout = new BorderPane();
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
@@ -100,10 +100,10 @@ public class AddAdminScreen {
 		try {
 			fillTable(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -113,10 +113,10 @@ public class AddAdminScreen {
 			try {
 				addAdmin(table.getSelectionModel().getSelectedItem());
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
@@ -155,6 +155,22 @@ public class AddAdminScreen {
 		fieldEstado.setPromptText("Estado");
 		fieldEstado.setPadding(inset);
 		
+		Button btnDelUsuario = new Button();
+		btnDelUsuario.setText("Eliminar usuario");
+		btnDelUsuario.setMinWidth(300);
+		btnDelUsuario.setFont(fontTexto);
+		btnDelUsuario.setOnAction(e->{
+			try {
+				delUsuario(table.getSelectionModel().getSelectedItem(),primaryStage,returnScene);
+			} catch (IOException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			} catch (InterruptedException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			}
+		});
+		
 		Button btnBuscar = new Button();
 		btnBuscar.setText("Buscar");
 		btnBuscar.setFont(fontTexto);
@@ -162,16 +178,16 @@ public class AddAdminScreen {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
 		
 		top.getChildren().add(lblTitulo);
-		left.getChildren().addAll(botonAddAdmin,botonRemAdmin, botonVolver);
+		left.getChildren().addAll(botonAddAdmin,botonRemAdmin,btnDelUsuario, botonVolver);
 		center.getChildren().add(table);
 		right.getChildren().addAll(txtId,fieldId,txtnombre,fieldNombre,txtfechanac,fieldFechaNac,
 				txtCorreo,fieldCorreo,txtPais,fieldPais,txtMunicipio,fieldMunicipio,txtLocalidad,
@@ -197,15 +213,15 @@ public class AddAdminScreen {
 	}
 	
 	public void addAdmin(Usuario user) throws IOException, InterruptedException {
-		if (ConfirmBox.display("Alerta", "¿Esta seguro que desea promover al usuario seleccionado a administrador?")) {
+		if (ConfirmBox.display("Alerta.", "¿Esta seguro que desea promover al usuario seleccionado a administrador?")) {
 			if (user  == null) {
-				AlertBox.display("Error", "Seleccione un usuario primero");
+				AlertBox.display("Error.", "Seleccione un usuario primero.");
 			}
 			else if (user.getEstado().contains("Sin verificar")) {
-				AlertBox.display("Error", "El usuario debe de estar verificado antes de promoverlo a administrador");
+				AlertBox.display("Error.", "El usuario debe de estar verificado antes de promoverlo a administrador.");
 			}
 			else if (user.getEstado().contains("Administrador")) {
-				AlertBox.display("Error", "Este usuario ya es administrador");
+				AlertBox.display("Error.", "Este usuario ya es administrador.");
 			}
 			else {
 				HttpClient client = HttpClient.newHttpClient();
@@ -216,11 +232,11 @@ public class AddAdminScreen {
 				String respuesta = response.body();
 				if (respuesta.contains("Exito#"))
 				{
-					AlertBox.display("Exito", "Se promovio el usuario seleccionado a administrador");
+					AlertBox.display("Exito.", "Se promovio el usuario seleccionado a administrador.");
 					user.setEstado("Administrador");
 				}
 				else {
-					AlertBox.display("Error", "Hubo un error al promover el usuario a administrador");
+					AlertBox.display("Error.", "Hubo un error al promover el usuario a administrador.");
 					System.out.println(respuesta);
 				}
 			}
@@ -230,7 +246,7 @@ public class AddAdminScreen {
 	
 	public void removeAdmin(Stage stage, Scene mainScreen, String userId) throws IOException, InterruptedException {
 		if (ConfirmBox.display("Alerta", "¿Esta seguro que desea remover su rol de administrador?")) {
-			if (ConfirmBox.display("Alerta", "¿Esta seguro? NO PODRA RECUPERAR SU ROL DE ADMINISTRADOR\nHASTA QUE ALGUIEN MAS LE CONCEDA EL ROL")) {
+			if (ConfirmBox.display("Alerta.", "¿Esta seguro? NO PODRA RECUPERAR SU ROL DE ADMINISTRADOR\nHASTA QUE ALGUIEN MAS LE CONCEDA EL ROL.")) {
 				HttpClient client = HttpClient.newHttpClient();
 				HttpRequest request = HttpRequest.newBuilder(URI.create
 						(Utilities.getBaseURL() + "/cambiaradmin.php?iduser=" +
@@ -239,14 +255,14 @@ public class AddAdminScreen {
 				String respuesta = response.body();
 				if (respuesta.contains("Exito#"))
 				{
-					AlertBox.display("Exito", "Se removió el rol de administrador de su cuenta");
+					AlertBox.display("Exito.", "Se removió el rol de administrador de su cuenta.");
 					stage.setScene(mainScreen);
 				}
 				else if (respuesta.contains("Nop#")) {
-					AlertBox.display("Error", "Usted es el único administrador restante\nPor favor promueva un nuevo usuario antes de proceder");
+					AlertBox.display("Error.", "Usted es el único administrador restante.\nPor favor promueva un nuevo usuario antes de proceder.");
 				}
 				else {
-					AlertBox.display("Error", "Hubo un error al remover su rol de administrador");
+					AlertBox.display("Error.", "Hubo un error al remover su rol de administrador.");
 					System.out.println(respuesta);
 				}
 			}
@@ -422,6 +438,29 @@ public class AddAdminScreen {
 		else {
 			return "Error";
 		}		
+	}
+	
+	private void delUsuario(Usuario usuario, Stage primaryStage, Scene returnScene) throws IOException, InterruptedException {
+		if(usuario == null) {
+			AlertBox.display("Alerta.", "Seleccione un usuario primero.");
+		}
+		else if(usuario.getEstado().contains("Administrador")) {
+			AlertBox.display("Alerta.", "No se puede eliminar un usuario de tipo administrador.");
+		}
+		else {
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder(URI.create(
+					Utilities.getBaseURL() + "/eliminarusuario.php?id="+ Utilities.stringToUTF(usuario.getID()))).GET().build();
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			System.out.println(response.body());
+			if(response.body().contains("Exito#")) {
+				AlertBox.display("Éxito.", "Se eliminó el usuario con éxito.");
+				primaryStage.setScene(returnScene);
+			}
+			else {
+				AlertBox.display("Error.", "Hubo un error al eliminar el usuario.");
+			}
+		}
 	}
 	
 	public Button getBotonVolver() {

@@ -102,7 +102,7 @@ public class RegistroScreen {
 				if (contrasena.getText().equals(contrasena2.getText()))
 					registrar();
 				else {
-					AlertBox.display("Error", "Las contraseñas en ambos campos no son las mismas\nAsegúrese de escribir la misma contraseña en ambos campos");
+					AlertBox.display("Error.", "Las contraseñas en ambos campos no son las mismas\nAsegúrese de escribir la misma contraseña en ambos campos.");
 				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -144,12 +144,12 @@ public class RegistroScreen {
 		String txtNombre = Utilities.stringToUTF(nombre.getText());
 		String txtContrasena = contrasena.getText();
 		if (txtContrasena.indexOf(" ")!=-1) {
-			AlertBox.display("Error", "La contraseña no puede contener espacios");
+			AlertBox.display("Error.", "La contraseña no puede contener espacios.");
 			return;
 		}
 		String txtCorreo = correo.getText();
 		if (txtCorreo.indexOf(" ")!=-1) {
-			AlertBox.display("Error", "El correo no puede contener espacios");
+			AlertBox.display("Error.", "El correo no puede contener espacios.");
 			return;
 		}
 		String txtFechaNac;
@@ -158,7 +158,7 @@ public class RegistroScreen {
 			 //System.out.println(txtFechaNac);
 		}
 		else {
-			AlertBox.display("Error", "Por favor asegúrese de llenar todos los campos");
+			AlertBox.display("Error.", "Por favor asegúrese de llenar todos los campos.");
 			return;
 		}
 		String txtPais = Utilities.stringToUTF(pais.getText());
@@ -174,7 +174,7 @@ public class RegistroScreen {
 		
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
-		AlertBox.display("Alerta", response.body());
+		AlertBox.display("Alerta.", response.body());
 	}
 	
 

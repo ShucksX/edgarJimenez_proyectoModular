@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 public class ClienteScreen {
 	private Scene clienteScene;
-	private Button botonCS,botonLaberinto,/*botonMemoPalabras,*/botonSiluetas,botonSopa,botonColores, botonResultado,botonChat, botonSucursales;
+	private Button botonCS,botonLaberinto,/*botonMemoPalabras,*/botonSiluetas,botonSopa,botonColores, botonResultado,botonChat, botonSucursales, botonContactos;
 	public ClienteScreen(String userId, boolean modoNC) {
 		BorderPane layout = new BorderPane();
 		
@@ -72,6 +72,11 @@ public class ClienteScreen {
 		botonResultado.setMinWidth(minwidth);
 		botonResultado.setFont(fontTexto);
 		
+		botonContactos = new Button();
+		botonContactos.setText("Ver tus contactos");
+		botonContactos.setMinWidth(minwidth);
+		botonContactos.setFont(fontTexto);
+		
 		botonSucursales = new Button();
 		botonSucursales.setText("Ver centros de atencion");
 		botonSucursales.setMinWidth(minwidth);
@@ -89,7 +94,7 @@ public class ClienteScreen {
 		botonCS.setFont(fontTexto);
 		
 		center.getChildren().addAll(lblTitulo,botonLaberinto,botonSiluetas,botonSopa,
-				botonColores,botonResultado,botonSucursales,botonChat,botonCS);
+				botonColores,botonResultado,botonContactos,botonSucursales,botonChat,botonCS);
 		center.setPadding(new Insets(20,0,0,0));
 		
 		Button botonConfig = new Button();
@@ -100,7 +105,7 @@ public class ClienteScreen {
 		botonConfig.setGraphic(view);
 		botonConfig.setOnAction(e-> {
 			if(modoNC) {
-				AlertBox.display("Alerta", "La configuración de usuario no está disponible en modo sin conexión");
+				AlertBox.display("Alerta.", "La configuración de usuario no está disponible en modo sin conexión.");
 			}
 			else {
 				openConfig(userId);
@@ -151,6 +156,10 @@ public class ClienteScreen {
 		return botonResultado;
 	}
 	
+	public Button getBotonContactos() {
+		return botonContactos;
+	}
+	
 	public Button getBotonSucursales() {
 		return botonSucursales;
 	}
@@ -176,10 +185,10 @@ public class ClienteScreen {
 		try {
 			UserConfigScreen.startConfig(userId);
 		} catch (IOException e) {
-			AlertBox.display("Error", "Hubo un error al conectar con el servidor");
+			AlertBox.display("Error.", "Hubo un error al conectar con el servidor.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida");
+			AlertBox.display("Error.", "Conexion interrumpida.");
 			e.printStackTrace();
 		}
 	}

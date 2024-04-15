@@ -65,13 +65,13 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 		Label lblTitulo = new Label ("Sopa de letras");
 		lblTitulo.setFont(fontTitulo);
 
-		Label instrucciones1 = new Label ("Busque las palabras que se indican");
+		Label instrucciones1 = new Label ("Busque las palabras que se indican.");
 		instrucciones1.setFont(fontTexto);
-		Label instrucciones2 = new Label("Presione las flechas en su teclado para mover el cursor");
+		Label instrucciones2 = new Label("Presione las flechas en su teclado para mover el cursor.");
 		instrucciones2.setFont(fontTexto);
-		Label instrucciones3 = new Label("Presione ENTER para escoger la letra en el cursor");
+		Label instrucciones3 = new Label("Presione ENTER para escoger la letra en el cursor.");
 		instrucciones3.setFont(fontTexto);
-		Label instrucciones4 = new Label("Retroceso/Delete -> Borrar letra     Escape -> Abandonar ejercicio");
+		Label instrucciones4 = new Label("Retroceso/Delete -> Borrar letra.    Escape -> Abandonar ejercicio.");
 		instrucciones4.setFont(fontTexto);
 		
         boardSize = game.getBoardSize();
@@ -125,7 +125,7 @@ public class SopaScreen implements EventHandler<KeyEvent> {
 					registrarResultadoBD(errCount+1);
 			}
 			else {
-				AlertBoxNonWait.display("Error", "No se pudo registrar su resultado");
+				AlertBoxNonWait.display("Error.", "No se pudo registrar su resultado.");
 			}
 		}
 	}
@@ -256,21 +256,21 @@ public class SopaScreen implements EventHandler<KeyEvent> {
         	timeline.stop();
         	timer.stop();
         	gameStage.setScene(endScene);
-        	AlertBoxNonWait.display("Resultado", "Usted tardo "+ time + " segundos.");
+        	AlertBoxNonWait.display("Resultado.", "Usted tardo "+ time + " segundos.");
         	try {
 				registrarResultadoBD(0);
 			} catch (IOException e) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error.", "La conexion al servidor se interrumpio.");
 				e.printStackTrace();
 			} catch (InterruptedException e) {
-				AlertBox.display("Error", "La conexion al servidor se interrumpio");
+				AlertBox.display("Error.", "La conexion al servidor se interrumpio.");
 				e.printStackTrace();
 			}
         }
     }
     
     public void endGame(Stage gameStage) {
-    	if (ConfirmBox.display("Salir del ejercicio", "¿Seguro que desea abandonar el ejercicio?")) {
+    	if (ConfirmBox.display("Salir del ejercicio.", "¿Seguro que desea abandonar el ejercicio?")) {
 	    	timeline.stop();
 	    	timer.stop();
 	    	gameStage.setScene(endScene);

@@ -30,6 +30,7 @@ public class Main extends Application {
 	private SopaScreen sopaScene;
 	//private PalabrasScreen palabrasScene;
 	private SiluetasScreen siluetasScene;
+	private ContactosScreen contactosScene;
 	private SucursalesScreen sucursalesScene;
 	private VerResultadosScreen resultadosScene;
 	private AddAdminScreen addAdminScene;
@@ -51,10 +52,10 @@ public class Main extends Application {
 				try {
 					ingresar(primaryStage);
 				} catch (IOException e1) {
-					AlertBox.display("Error", "No se pudo conectar a la base de datos\nRevise su conexion e intente de nuevo");
+					AlertBox.display("Error.", "No se pudo conectar a la base de datos\nRevise su conexion e intente de nuevo.");
 					e1.printStackTrace();
 				} catch (InterruptedException e1) {
-					AlertBox.display("Error", e1.getMessage());
+					AlertBox.display("Error.", e1.getMessage());
 					e1.printStackTrace();
 				}
 			});
@@ -69,7 +70,7 @@ public class Main extends Application {
 			registroScene.getBotonRegresar().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));			
 			//Configurar ventana principal
 			primaryStage.setScene(principalScene.getScene());
-			primaryStage.setTitle("Aplicación para el apoyo del tratamiento de Alzheimer");
+			primaryStage.setTitle("Aplicación para la estimulación cognitiva para Alzheimer");
 			primaryStage.getIcons().add(new Image("LogoTemp.png"));
 			primaryStage.show();
 		} catch(Exception e) {
@@ -80,6 +81,7 @@ public class Main extends Application {
 	private void changeToAdminScreen(Stage primaryStage) {
 		if(adminScene == null) {
 			adminScene = new AdminScreen(userId);
+			adminScene.getBotonContactos().setOnAction(e-> changeToContactosScreen(primaryStage));
 			adminScene.getBotonSucursales().setOnAction(e-> changeToSucursalesScreen(primaryStage));
 			adminScene.getBotonResultados().setOnAction(e-> changeToResultadosScreen(primaryStage));
 			adminScene.getBotonAddAdmin().setOnAction(e-> changeToAddAdminScreen(primaryStage));
@@ -89,31 +91,37 @@ public class Main extends Application {
 	}
 	
 	private void changeToClienteScreen(Stage primaryStage, boolean modoNC) {
-		if(clienteScene == null) {
-			clienteScene = new ClienteScreen(userId,modoNC);
-			clienteScene.getBotonCS().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));
-			clienteScene.getBotonLaberinto().setOnAction(e-> changeToLaberintoScreen(primaryStage,modoNC));
-			//clienteScene.getBotonMemoPalabras().setOnAction(e-> changeToPalabrasScreen(primaryStage));
-			clienteScene.getBotonSiluetas().setOnAction(e-> changeToSiluetasScreen(primaryStage,modoNC));
-			clienteScene.getBotonSopa().setOnAction(e-> changeToSopaScreen(primaryStage,modoNC));
-			clienteScene.getBotonColores().setOnAction(e-> changeToColoresScreen(primaryStage,modoNC));
-			clienteScene.getBotonResultado().setOnAction(e-> {
-				if(modoNC) {
-					AlertBox.display("Alerta", "Los resultados no están disponibles en el modo sin conexión");
-				}
-				else {
-					changeToResultadoScreen(primaryStage);
-				}
-			});
-			clienteScene.getBotonSucursales().setOnAction(e-> {
-				if(modoNC) {
-					AlertBox.display("Alerta", "La consulta de sucursales no está disponible en el modo sin conexión");
-				}
-				else {
-					changeToSucursalesCLScreen(primaryStage);
-				}
-			});
-		}
+		clienteScene = new ClienteScreen(userId,modoNC);
+		clienteScene.getBotonCS().setOnAction(e-> primaryStage.setScene(principalScene.getScene()));
+		clienteScene.getBotonLaberinto().setOnAction(e-> changeToLaberintoScreen(primaryStage,modoNC));
+		//clienteScene.getBotonMemoPalabras().setOnAction(e-> changeToPalabrasScreen(primaryStage));
+		clienteScene.getBotonSiluetas().setOnAction(e-> changeToSiluetasScreen(primaryStage,modoNC));
+		clienteScene.getBotonSopa().setOnAction(e-> changeToSopaScreen(primaryStage,modoNC));
+		clienteScene.getBotonColores().setOnAction(e-> changeToColoresScreen(primaryStage,modoNC));
+		clienteScene.getBotonResultado().setOnAction(e-> {
+			if(modoNC) {
+				AlertBox.display("Alerta.", "Los resultados no están disponibles en el modo sin conexión.");
+			}
+			else {
+				changeToResultadoScreen(primaryStage);
+			}
+		});
+		clienteScene.getBotonContactos().setOnAction(e-> {
+			if(modoNC) {
+				AlertBox.display("Alerta.", "La consulta de contactos no está disponible en el modo sin conexión.");
+			}
+			else {
+				changeToContactosCLScreen(primaryStage);
+			}
+		});
+		clienteScene.getBotonSucursales().setOnAction(e-> {
+			if(modoNC) {
+				AlertBox.display("Alerta.", "La consulta de sucursales no está disponible en el modo sin conexión.");
+			}
+			else {
+				changeToSucursalesCLScreen(primaryStage);
+			}
+		});
 		primaryStage.setScene(clienteScene.getScene());
 	}
 	
@@ -176,6 +184,18 @@ public class Main extends Application {
 		primaryStage.setScene(resultadoScene.getScene());
 	}
 	
+	private void changeToContactosCLScreen(Stage primaryStage) {
+		contactosScene = new ContactosScreen(clienteScene.getScene(),primaryStage,false,userId);
+		contactosScene.getBotonVolver().setOnAction(e-> primaryStage.setScene(clienteScene.getScene()));
+		primaryStage.setScene(contactosScene.getScene());
+	}
+	
+	private void changeToContactosScreen(Stage primaryStage) {
+		contactosScene = new ContactosScreen(adminScene.getScene(),primaryStage,true,userId);
+		contactosScene.getBotonVolver().setOnAction(e-> primaryStage.setScene(adminScene.getScene()));
+		primaryStage.setScene(contactosScene.getScene());
+	}
+	
 	private void changeToSucursalesCLScreen(Stage primaryStage) {
 		sucursalesScene = new SucursalesScreen(clienteScene.getScene(),primaryStage,false,userId);
 		sucursalesScene.getBotonVolver().setOnAction(e-> primaryStage.setScene(clienteScene.getScene()));
@@ -195,16 +215,16 @@ public class Main extends Application {
 	}
 	
 	private void changeToAddAdminScreen(Stage primaryStage) {
-		addAdminScene = new AddAdminScreen();
+		addAdminScene = new AddAdminScreen(primaryStage, adminScene.getScene());
 		addAdminScene.getBotonVolver().setOnAction(e-> primaryStage.setScene(adminScene.getScene()));
 		addAdminScene.getRemAdmin().setOnAction(e-> {
 			try {
 				addAdminScene.removeAdmin(primaryStage, principalScene.getScene(),userId);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
@@ -224,13 +244,13 @@ public class Main extends Application {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		//System.out.println(response.body());
 		if (response.body().contains("unv"))
-			AlertBox.display("Error", "Por favor verifique su cuenta en su correo");
+			AlertBox.display("Error.", "Por favor verifique su cuenta en su correo.");
 		else if (response.body().contains("noe"))
-			AlertBox.display("Error", "No se encontró su cuenta\nVerifique sus datos");
+			AlertBox.display("Error.", "No se encontró su cuenta\nVerifique sus datos.");
 		else if (response.body().contains("adm")) {
 			userId = response.body().substring(3);
 			System.out.println(userId);
-			if(ConfirmBox.display("Alerta", "Su cuenta es de tipo administrador\n¿Entrar a modo administrador?")) 
+			if(ConfirmBox.display("Alerta.", "Su cuenta es de tipo administrador.\n¿Entrar a modo administrador?")) 
 			{
 				changeToAdminScreen(primaryStage);
 			}
@@ -239,7 +259,7 @@ public class Main extends Application {
 			}
 		}
 		else if (response.body().contains("vac"))
-			AlertBox.display("Error", "Por favor llene los campos");
+			AlertBox.display("Error.", "Por favor llene los campos.");
 		
 		else if (response.body().contains("cli")) {
 			userId = response.body().substring(3);
@@ -248,7 +268,7 @@ public class Main extends Application {
 		}
 		else {
 			System.out.println(response.body());
-			AlertBox.display("Error", "Hubo un error, intente de nuevo más tarde");
+			AlertBox.display("Error.", "Hubo un error, intente de nuevo más tarde.");
 		}
 	}
 	

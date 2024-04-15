@@ -108,10 +108,10 @@ public class ResSiluetas {
 			else
 				fillTableId(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -144,22 +144,41 @@ public class ResSiluetas {
 		fieldFechaRes.setPromptText("Fecha del resultado");
 		fieldFechaRes.setPadding(inset);		
 		
+		Button btnDelResultado = new Button();
+		btnDelResultado.setText("Eliminar resultado");
+		btnDelResultado.setMinWidth(300);
+		btnDelResultado.setFont(fontTexto);
+		btnDelResultado.setOnAction(e->{
+			try {
+				delResultado(table.getSelectionModel().getSelectedItem(),primaryStage,returnScene);
+			} catch (IOException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			} catch (InterruptedException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			}
+		});
+		
 		Button btnBuscar = new Button();
 		btnBuscar.setText("Buscar");
 		btnBuscar.setOnAction(e-> {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
 		
 		top.getChildren().add(lblTitulo);
-		if(!mode) {
+		if(mode) {
+			left.getChildren().add(btnDelResultado);
+		}
+		else {
 			left.getChildren().add(botonGrafica);
 		}
 		left.getChildren().add(botonVolver);
@@ -295,11 +314,11 @@ public class ResSiluetas {
 		try {
 			fillTableId(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "Error conectando con el servidor, intente de nuevo mas tarde");
+			AlertBox.display("Error.", "Error conectando con el servidor, intente de nuevo mas tarde.");
 			e.printStackTrace();
 			return;
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexion interrumpida, intente de nuevo mas tarde");
+			AlertBox.display("Error.", "Conexion interrumpida, intente de nuevo mas tarde.");
 			e.printStackTrace();
 			return;
 		}
@@ -390,6 +409,26 @@ public class ResSiluetas {
 		window.showAndWait();
 		
 		return;
+	}
+	
+	private void delResultado(LSData resultado, Stage primaryStage, Scene returnScene) throws IOException, InterruptedException {
+		if(resultado == null) {
+			AlertBox.display("Alerta.", "Seleccione un resultado primero.");
+		}
+		else {
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder(URI.create(
+					Utilities.getBaseURL() + "/Resultado/reseliminarsiluetas.php?id="+ Utilities.stringToUTF(resultado.getID()))).GET().build();
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			System.out.println(response.body());
+			if(response.body().contains("Exito#")) {
+				AlertBox.display("Éxito.", "Se eliminó el resultado con éxito.");
+				primaryStage.setScene(returnScene);
+			}
+			else {
+				AlertBox.display("Error.", "Hubo un error al eliminar el resultado.");
+			}
+		}
 	}
 	
 	private float calcularTiempo(TableView<LSData> table, int i) {

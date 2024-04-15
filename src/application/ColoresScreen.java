@@ -53,9 +53,9 @@ public class ColoresScreen {
 		lblTitulo = new Label ("Colores intermitentes");
 		lblTitulo.setFont(fontTitulo);
 		
-		lblInstrucciones1 = new Label("A continuación se le presentaran 6 colores por un segundo");
+		lblInstrucciones1 = new Label("A continuación se le presentaran 6 colores por un segundo.");
 		lblInstrucciones1.setFont(fontTexto);
-		lblInstrucciones2 = new Label("Deberá escoger la ubicación del color que se le pide");
+		lblInstrucciones2 = new Label("Deberá escoger la ubicación del color que se le pide.");
 		lblInstrucciones2.setFont(fontTexto);
 		lblInstrucciones3 = new Label("(Los colores también tendrán una figura asociado)");
 		lblInstrucciones3.setFont(fontTexto);
@@ -341,10 +341,10 @@ public class ColoresScreen {
 			try {
 				registrarResultadoBD(0);
 			} catch (IOException e) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e.printStackTrace();
 			} catch (InterruptedException e) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e.printStackTrace();
 			}
 			primaryStage.setScene(clienteScene.getScene());
@@ -370,7 +370,7 @@ public class ColoresScreen {
 					registrarResultadoBD(errCount+1);
 			}
 			else {
-				AlertBoxNonWait.display("Error", "No se pudo registrar su resultado");
+				AlertBoxNonWait.display("Error.", "No se pudo registrar su resultado.");
 			}
 		}
 	}

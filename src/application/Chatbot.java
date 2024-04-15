@@ -164,7 +164,7 @@ public class Chatbot {
 			return response;
 		}
 		else if(findInArray(1,input,false)) {
-			response = "No puedo asegurarte si tienes esta condición, pero te recomendamos hacer los ejercicios en esta aplicación para observar cómo se comporta tu memoria y concentración. Si considera que estos aspectos empeoran, puede comunicarse con un centro de atención en la ventana de Centros de Atención para recibir consulta y ayuda profesional ";
+			response = "No puedo asegurarte si tienes esta condición, solicita esa información a tu especialista. Si no cuentas con un especialista que te proporcione atención, puedo recomendarte que visites la ventana de centros de atención y buscas a un especialista para ti. ";
 			return response;
 		}
 		else if(findInArray(2,input,false)) {
@@ -172,19 +172,19 @@ public class Chatbot {
 			return response;
 		}
 		else if (findInArray(3,input,false)){
-			response = "Pare ver tus resultados solo cierra esta ventana y presiona el botón correspondiente al ejercicio de la quieres ver los resultados, en la ventana de resultados. Aquí veras los resultados y puedes observar una gráfica de los mismos. ";
+			response = "Para ver tus resultados solo cierra esta ventana y presiona el botón correspondiente al ejercicio del quieres ver los resultados, esto se encuentra en la ventana de resultados. Aquí veras los resultados y puedes observar una gráfica de los mismos. ";
 			return response;
 		}
 		else if (findInArray(4,input,false)) {
-			response = "Estos ejercicios sirven para comprobar y practicar tu memoria y atención, para que con los resultados puedas deducir si requieres apoyo o no,";
+			response = "Estos ejercicios funcionan para estimular tu atención, concentración y conocimiento en casos de Alzheimer leve a moderado,";
 			return response;
 		}
 		else if(findInArray(5,input,false)) {
-			response = "La grafica es una representación visual de tu desempeño en los ejercicios, puedes acceder a ellos presionando el botón de Ver Grafica en la ventana de resultado de un ejercicio en específico. En esta ventana veras una gráfica de tu desempeño mediante el paso del tiempo al igual que un texto que explica si tu desempeño empeora, mejora o sería mejor hacer más ejercicios primero. Esto no confirma si tienes Alzheimer o no así, que se recomienda buscar un centro de atención si buscas confirmación en ello. ";
+			response = "La grafica es una representación visual de tu desempeño en los ejercicios, puedes acceder a ellos presionando el botón de Ver Grafica en la ventana de resultado de un ejercicio en específico. En esta ventana veras una gráfica de tu desempeño mediante el paso del tiempo al igual que un texto que explica si tu desempeño empeora, mejora o sería mejor hacer más ejercicios primero.";
 			return response;
 		}
 		else if(findInArray(6,input,false)) {
-			response = "En esta aplicación puedes intentar 4 ejercicios distintos. El primero es un laberinto, en donde deberás mover tu punto hacia la salida usando las flechas de direcciones, deberás hacerlo 5 veces y se medirá el tiempo tardado. El siguiente ejercicio es la sopa de letras, es una sopa de letras tradicional en donde deberás encontrar palabras escondidas entra varias letras aleatorias y se medirá el tiempo que tardes en hacerlo. La siguiente pruebe es la memorización de palabras, en donde deberás recordar 3 palabras en un orden, esperar un día y decir las palabras que se te pidió recordar. Finalmente, el último ejercicio son los colores intermitentes, en donde deberás prestar atención al color y figura que se te muestra y rápidamente localizar en que posición aparece después de un tiempo. ";
+			response = "En esta aplicación puedes intentar 4 ejercicios distintos. El primero es un laberinto, en donde deberás mover tu punto hacia la salida usando las flechas de direcciones, deberás hacerlo 5 veces y se medirá el tiempo tardado. El siguiente ejercicio es la sopa de letras, es una sopa de letras tradicional en donde deberás encontrar palabras escondidas entra varias letras aleatorias y se medirá el tiempo que tardes en hacerlo. El siguiente ejercicio es identificar siluetas en donde se te mostraran 10 siluetas y deberás identificar si se trata de un ave o no. Finalmente, el último ejercicio son los colores intermitentes, en donde deberás prestar atención al color y figura que se te muestra y rápidamente localizar en qué posición aparece después de un tiempo. ";
 			return response;
 		}
 		else if(findInArray(7,input,false)) {

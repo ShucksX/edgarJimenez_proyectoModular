@@ -28,7 +28,7 @@ public class PrincipalScreen {
 		Font fontTexto = Font.font("Courier New",FontWeight.NORMAL,16);
 		Font fontTitulo = Font.font("Courier New",FontWeight.BOLD,22);
 		
-		Label lblTitulo = new Label ("Aplicación para el apoyo del tratamiento de Alzheimer");
+		Label lblTitulo = new Label ("Aplicación para la estimulación cognitiva para Alzheimer");
 		lblTitulo.setFont(fontTitulo);
 		Label lblCotacion = new Label ("(Este software se utiliza para Alzheimer leve a moderado)");
 		lblCotacion.setFont(fontTexto);

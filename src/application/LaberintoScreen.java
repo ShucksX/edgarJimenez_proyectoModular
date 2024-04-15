@@ -78,13 +78,13 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 		lblTitulo.setFont(fontTitulo);
 		
 		Font fontInstrucciones = Font.font("Courier New",FontWeight.NORMAL,16);
-		Label lblInstrucciones1 = new Label ("Resuelva el laberinto llevando el punto en la parte inferior a la salida");
+		Label lblInstrucciones1 = new Label ("Resuelva el laberinto llevando el punto en la parte inferior a la salida.");
 		lblInstrucciones1.setFont(fontInstrucciones);
 		
-		Label lblInstrucciones2 = new Label ("Presione las flechas para mover el cursor");
+		Label lblInstrucciones2 = new Label ("Presione las flechas para mover el cursor.");
 		lblInstrucciones2.setFont(fontInstrucciones);
 		
-		Label lblInstrucciones3 = new Label("Puede presionar la tecla de escape para abandonar el ejercicio");
+		Label lblInstrucciones3 = new Label("Puede presionar la tecla de escape para abandonar el ejercicio.");
 		lblInstrucciones3.setFont(fontInstrucciones);
 		
 		boardSize = maze.getBoardSize();
@@ -231,14 +231,14 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
         		timeline.stop();
             	timer.stop();
                 gameStage.setScene(endScene);
-            	AlertBoxNonWait.display("Resultado", "Usted tardo "+ time + " segundos.");
+            	AlertBoxNonWait.display("Resultado.", "Usted tardo "+ time + " segundos.");
             	try {
 					registrarResultadoBD(0);
 				} catch (IOException e) {
-					AlertBox.display("Error", "La conexion al servidor se interrumpio");
+					AlertBox.display("Error.", "La conexion al servidor se interrumpio.");
 					e.printStackTrace();
 				} catch (InterruptedException e) {
-					AlertBox.display("Error", "La conexión al servidor se interrumpió");
+					AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 					e.printStackTrace();
 				}
         	}
@@ -255,7 +255,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
     }
 	
 	public void endGame(Stage gameStage) {
-		if (ConfirmBox.display("Salir del ejercicio", "¿Seguro que desea abandonar el ejercicio?")) {
+		if (ConfirmBox.display("Salir del ejercicio.", "¿Seguro que desea abandonar el ejercicio?")) {
 	    	timeline.stop();
 	    	timer.stop();
 	        gameStage.setScene(endScene);
@@ -279,7 +279,7 @@ public class LaberintoScreen implements EventHandler<KeyEvent> {
 				registrarResultadoBD(errCount+1);
 			}
 			else {
-				AlertBoxNonWait.display("Error", "No se pudo registrar su resultado");
+				AlertBoxNonWait.display("Error.", "No se pudo registrar su resultado.");
 			}
 		}
 	}

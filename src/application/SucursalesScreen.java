@@ -97,10 +97,10 @@ public class SucursalesScreen {
 		try {
 			fillTable(table);
 		} catch (IOException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "La conexión al servidor se interrumpió");
+			AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 			e.printStackTrace();
 		}
 		table.setMinWidth(600);
@@ -165,10 +165,10 @@ public class SucursalesScreen {
 			try {
 				buscar(table);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
@@ -181,10 +181,10 @@ public class SucursalesScreen {
 			try {
 				buscarArea(table,userID);
 			} catch (IOException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "La conexión al servidor se interrumpió");
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
 				e1.printStackTrace();
 			}
 		});
@@ -195,10 +195,26 @@ public class SucursalesScreen {
 		btnAddCentro.setFont(fontTexto);
 		btnAddCentro.setOnAction(e-> addCenter(primaryStage,returnScene));
 		
+		Button btnDelCentro = new Button();
+		btnDelCentro.setText("Eliminar centro");
+		btnDelCentro.setMinWidth(300);
+		btnDelCentro.setFont(fontTexto);
+		btnDelCentro.setOnAction(e->{
+			try {
+				delCentro(table.getSelectionModel().getSelectedItem(),primaryStage,returnScene);
+			} catch (IOException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			} catch (InterruptedException e1) {
+				AlertBox.display("Error.", "La conexión al servidor se interrumpió.");
+				e1.printStackTrace();
+			}
+		});
+		
 		top.getChildren().add(lblTitulo);
 		center.getChildren().add(table);
 		if (mode) {
-			left.getChildren().add(btnAddCentro);
+			left.getChildren().addAll(btnAddCentro,btnDelCentro);
 			right.getChildren().addAll(txtId,fieldId);
 		}
 		left.getChildren().addAll(botonVolver);
@@ -283,13 +299,13 @@ public class SucursalesScreen {
 		HttpRequest request = HttpRequest.newBuilder(URI.create(url)).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		if(response.body().contains("noe#")) {
-			AlertBox.display("Hubo un error al obtener tu ubicación", "No se pudo obtener tu ubicación para la búsqueda, intenta de nuevo más tarde.");
+			AlertBox.display("Hubo un error al obtener tu ubicación.", "No se pudo obtener tu ubicación para la búsqueda, intenta de nuevo más tarde.");
 		}
 		else if(response.body().contains("noec#")) {
-			AlertBox.display("Error", "No se logró encontrar centros cerca de tu ubicación, verifica tus datos de ubicación en tu configuración de usuario.");
+			AlertBox.display("Error.", "No se logró encontrar centros cerca de tu ubicación, verifica tus datos de ubicación en tu configuración de usuario.");
 		}
 		else {
-			AlertBox.display("Éxito", "Se encontraron centros de atención cercanos a tu ubicación.");
+			AlertBox.display("Éxito.", "Se encontraron centros de atención cercanos a tu ubicación.");
 			setupTable(table,response.body());
 		}
 	}
@@ -384,6 +400,26 @@ public class SucursalesScreen {
 		HttpRequest request = HttpRequest.newBuilder(URI.create(url)).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		setupTable(table,response.body());
+	}
+	
+	private void delCentro(Sucursal sucursal, Stage primaryStage, Scene returnScene) throws IOException, InterruptedException {
+		if(sucursal == null) {
+			AlertBox.display("Alerta", "Seleccione un centro primero.");
+		}
+		else {
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder(URI.create(
+					Utilities.getBaseURL() + "/Centros/eliminarcentro.php?id="+ Utilities.stringToUTF(sucursal.getID()))).GET().build();
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			System.out.println(response.body());
+			if(response.body().contains("Exito#")) {
+				AlertBox.display("Éxito.", "Se eliminó el centro con éxito.");
+				primaryStage.setScene(returnScene);
+			}
+			else {
+				AlertBox.display("Error.", "Hubo un error al eliminar el centro.");
+			}
+		}
 	}
 	
 	private void addCenter (Stage primaryStage, Scene returnScene) {

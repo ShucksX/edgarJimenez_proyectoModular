@@ -77,10 +77,10 @@ public class AddCenter {
 					window.close();
 				}
 			} catch (IOException e1) {
-				AlertBox.display("Error", "Error al conectar con el servidor");
+				AlertBox.display("Error.", "Error al conectar con el servidor.");
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				AlertBox.display("Error", "Hubo una interrupción en la conexión");
+				AlertBox.display("Error.", "Hubo una interrupción en la conexión.");
 				e1.printStackTrace();
 			}
 		});
@@ -127,11 +127,11 @@ public class AddCenter {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		System.out.println(response.body());
 		if (response.body().contains("exito")) {
-			AlertBox.display("Exito", "Se registró el centro con éxito");
+			AlertBox.display("Exito.", "Se registró el centro con éxito.");
 			return true; 
 		}
 		else {
-			AlertBox.display("Error", response.body());
+			AlertBox.display("Error.", response.body());
 			return false;
 		}
 	}

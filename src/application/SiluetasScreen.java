@@ -157,16 +157,16 @@ public class SiluetasScreen {
 		btnSi.setFont(fontTexto);
 		btnSi.setOnAction(e-> {
 			if(siluList.get(siluetaEscogida).getAve()) {
-				AlertBox.display("Resultado", "¡Correcto!");
+				AlertBox.display("Resultado.", "¡Correcto!");
 				if(contador+1 >= numPruebas) {
 					AlertBox.display("Resultado final", "Has acertado " + (puntaje +1)+ " de " + numPruebas);
 					try {
 						registrarResultadoBD(puntaje+1,0);
 					} catch (IOException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					} catch (InterruptedException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					}
 					salirEscena();
@@ -176,16 +176,16 @@ public class SiluetasScreen {
 				}
 			}
 			else {
-				AlertBox.display("Resultado", "Incorrecto");
+				AlertBox.display("Resultado.", "Incorrecto");
 				if(contador+1 >= numPruebas) {
-					AlertBox.display("Resultado final", "Has acertado " + puntaje + " de " + numPruebas);
+					AlertBox.display("Resultado final.", "Has acertado " + puntaje + " de " + numPruebas + ".");
 					try {
 						registrarResultadoBD(puntaje,0);
 					} catch (IOException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					} catch (InterruptedException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					}
 					salirEscena();
@@ -204,16 +204,16 @@ public class SiluetasScreen {
 		btnNo.setFont(fontTexto);
 		btnNo.setOnAction(e-> {
 			if(!siluList.get(siluetaEscogida).getAve()) {
-				AlertBox.display("Resultado", "¡Correcto!");
+				AlertBox.display("Resultado.", "¡Correcto!");
 				if(contador + 1 >= numPruebas) {
-					AlertBox.display("Resultado final", "Has acertado " + (puntaje +1)+ " de " + numPruebas);
+					AlertBox.display("Resultado final.", "Has acertado " + (puntaje +1)+ " de " + numPruebas +".");
 					try {
 						registrarResultadoBD(puntaje+1,0);
 					} catch (IOException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					} catch (InterruptedException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					}
 					salirEscena();
@@ -223,16 +223,16 @@ public class SiluetasScreen {
 				}
 			}
 			else {
-				AlertBox.display("Resultado", "Incorrecto");
+				AlertBox.display("Resultado.", "Incorrecto");
 				if(contador + 1 >= numPruebas) {
-					AlertBox.display("Resultado final", "Has acertado " + puntaje + " de " + numPruebas);
+					AlertBox.display("Resultado final.", "Has acertado " + puntaje + " de " + numPruebas + ".");
 					try {
 						registrarResultadoBD(puntaje,0);
 					} catch (IOException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					} catch (InterruptedException e1) {
-						AlertBox.display("Error", "Error al conectar con el servidor.");
+						AlertBox.display("Error.", "Error al conectar con el servidor.");
 						e1.printStackTrace();
 					}
 					salirEscena();
@@ -287,11 +287,11 @@ public class SiluetasScreen {
 		System.out.println(response.body());
 		if (!response.body().contains("Exito#")) {
 			if (errCount < 5 ) {
-					AlertBox.display("Registro", "Resultado registrado con exito.");
+					AlertBox.display("Registro.", "Resultado registrado con exito.");
 					registrarResultadoBD(puntuacion,errCount+1);
 			}
 			else {
-				AlertBoxNonWait.display("Error", "No se pudo registrar su resultado");
+				AlertBoxNonWait.display("Error.", "No se pudo registrar su resultado.");
 			}
 		}
 	}

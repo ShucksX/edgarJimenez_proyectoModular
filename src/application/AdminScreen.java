@@ -20,7 +20,7 @@ import javafx.scene.text.FontWeight;
 
 public class AdminScreen {
 	private Scene adminScene;
-	private Button botonCS,botonSucursales,botonAddAdmin,botonResultados;
+	private Button botonCS,botonContactos,botonSucursales,botonAddAdmin,botonResultados;
 	public AdminScreen(String userId) {
 		BorderPane layout = new BorderPane();
 		
@@ -38,6 +38,11 @@ public class AdminScreen {
 		
 		Label lblTitulo = new Label ("Menú de administrador");
 		lblTitulo.setFont(fontTitulo);
+		
+		botonContactos = new Button();
+		botonContactos.setText("Administrar contactos");
+		botonContactos.setMinWidth(320);
+		botonContactos.setFont(fontTexto);
 		
 		botonSucursales = new Button();
 		botonSucursales.setText("Administrar sucursales");
@@ -59,7 +64,7 @@ public class AdminScreen {
 		botonCS.setMinWidth(320);
 		botonCS.setFont(fontTexto);
 		
-		center.getChildren().addAll(lblTitulo,botonSucursales,botonResultados,botonAddAdmin,botonCS);
+		center.getChildren().addAll(lblTitulo,botonContactos,botonSucursales,botonResultados,botonAddAdmin,botonCS);
 		center.setPadding(new Insets(20,10,10,10));
 		
 		Button botonConfig = new Button();
@@ -92,6 +97,10 @@ public class AdminScreen {
 		
 	}
 	
+	public Button getBotonContactos() {
+		return botonContactos;
+	}
+	
 	public Button getBotonSucursales() {
 		return botonSucursales;
 	}
@@ -116,10 +125,10 @@ public class AdminScreen {
 		try {
 			UserConfigScreen.startConfig(userId);
 		} catch (IOException e) {
-			AlertBox.display("Error", "Hubo un error al conectar con el servidor");
+			AlertBox.display("Error.", "Hubo un error al conectar con el servidor.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			AlertBox.display("Error", "Conexión interrumpida");
+			AlertBox.display("Error.", "Conexión interrumpida.");
 			e.printStackTrace();
 		}
 	}
