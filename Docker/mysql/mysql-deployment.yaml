@@ -24,6 +24,7 @@ spec:
     matchLabels:
       app: webapp-sql
       tier: backend
+  replicas: 2
   strategy:
     type: Recreate
   template:
